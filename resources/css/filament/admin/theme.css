@@ -1,0 +1,58 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import '../pronote-portal.css';
+@import '../adobe-login.css';
+
+@source '../../../../app/Filament/**/*.php';
+@source '../../../../resources/views/filament/**/*.blade.php';
+
+/* Force full-width editing area for Site Contents resource. */
+.fi-resource-site-contents.fi-resource-edit-record-page .fi-page-content,
+.fi-resource-site-contents.fi-resource-create-record-page .fi-page-content {
+    max-width: none;
+    width: 100%;
+}
+
+.fi-resource-site-contents.fi-resource-edit-record-page .fi-sc-form,
+.fi-resource-site-contents.fi-resource-create-record-page .fi-sc-form,
+.fi-resource-site-contents.fi-resource-edit-record-page .fi-tabs,
+.fi-resource-site-contents.fi-resource-create-record-page .fi-tabs {
+    max-width: none;
+    width: 100%;
+}
+
+/* Réservations — profil serveur (mobile / tablette) */
+@media (max-width: 1023px) {
+    .fi-resource-reservations.fi-resource-list-records-page .fi-ta-filters-above-content-ctn {
+        width: 100%;
+    }
+
+    .fi-resource-reservations.fi-resource-list-records-page .fi-ta-header-toolbar {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .fi-resource-reservations.fi-resource-view-record-page .rsv-floor-action-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .fi-resource-reservations.fi-resource-view-record-page .rsv-floor-action-group .fi-btn,
+    .fi-resource-reservations.fi-resource-view-record-page .rsv-floor-action-group .fi-ac-btn-group > * {
+        width: 100%;
+        justify-content: center;
+        min-height: 2.75rem;
+    }
+
+    .fi-resource-reservations.fi-resource-view-record-page .fi-page-header-actions {
+        width: 100%;
+        align-items: stretch;
+    }
+}
+
+@media (min-width: 1024px) {
+    .fi-resource-reservations.fi-resource-view-record-page .rsv-floor-action-group .fi-ac-btn-group {
+        flex-wrap: wrap;
+    }
+}

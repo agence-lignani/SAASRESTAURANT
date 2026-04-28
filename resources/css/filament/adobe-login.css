@@ -1,0 +1,188 @@
+/* Page de connexion — style proche Adobe ID (carte centrée, bouton rouge).
+   Le scope `.adobe-login-page` est sur la racine Livewire : couvre tout le schéma Filament. */
+
+#adobe-login-viewport.adobe-login-viewport {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.25rem;
+    background: #f3f3f3;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.adobe-login-shell {
+    width: 100%;
+    max-width: 26rem;
+}
+
+.adobe-login-flash {
+    margin: 0 0 1rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+}
+
+.adobe-login-flash--success {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #1b5e20;
+}
+
+.adobe-login-flash--danger {
+    background: #ffebee;
+    border: 1px solid #ef9a9a;
+    color: #b71c1c;
+}
+
+.adobe-login-card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow:
+        0 1px 3px rgb(0 0 0 / 0.08),
+        0 4px 24px rgb(0 0 0 / 0.06);
+    padding: 2.25rem 2rem 1.75rem;
+}
+
+.adobe-login-brand {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #505050;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+.adobe-login-title {
+    margin: 0;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: #2c2c2c;
+    line-height: 1.25;
+}
+
+.adobe-login-sub {
+    margin: 0.5rem 0 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: #6e6e6e;
+}
+
+.adobe-login-page .fi-sc-form {
+    gap: 1.125rem;
+}
+
+.adobe-login-page .fi-fo-field-wrp {
+    margin-bottom: 0;
+}
+
+.adobe-login-page .fi-fo-field-label,
+.adobe-login-page .fi-fo-field-label-content {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.adobe-login-page .fi-input-wrp {
+    border-radius: 4px;
+    border: 1px solid #d3d3d3;
+    background: #fff;
+    box-shadow: none;
+}
+
+.adobe-login-page .fi-input-wrp:focus-within {
+    border-color: #1473e6;
+    box-shadow: 0 0 0 1px #1473e6;
+}
+
+.adobe-login-page input.fi-input {
+    font-size: 1rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 3px;
+}
+
+.adobe-login-page .fi-fo-checkbox label {
+    font-size: 0.8125rem;
+    color: #505050;
+}
+
+.adobe-login-page .fi-sc-callout {
+    margin-bottom: 0.25rem;
+    border-radius: 4px;
+}
+
+.adobe-login-page .fi-sc-actions {
+    margin-top: 1.5rem;
+}
+
+.adobe-login-page .fi-sc-actions .fi-btn.fi-color-primary,
+.adobe-login-page .fi-sc-actions .fi-btn-color-primary,
+.adobe-login-page .fi-sc-actions button[type='submit'],
+.adobe-login-page .fi-sc-actions a.fi-btn {
+    width: 100%;
+    justify-content: center;
+    border-radius: 24px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+    background: #eb1000 !important;
+    border-color: #eb1000 !important;
+    color: #fff !important;
+}
+
+.adobe-login-page .fi-sc-actions .fi-btn.fi-color-primary:hover,
+.adobe-login-page .fi-sc-actions button[type='submit']:hover,
+.adobe-login-page .fi-sc-actions a.fi-btn:hover {
+    background: #c90e00 !important;
+    border-color: #c90e00 !important;
+}
+
+.adobe-login-footer {
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid #e8e8e8;
+    text-align: center;
+    font-size: 0.8125rem;
+}
+
+.adobe-login-footer a {
+    color: #1473e6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.adobe-login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Code à 6 chiffres (Filament OneTimeCodeInput) — aligné sur le reste du formulaire */
+.adobe-login-page .fi-one-time-code-input-ctn {
+    height: 3rem;
+}
+
+.adobe-login-page .fi-one-time-code-input-ctn > .fi-one-time-code-input-digit-field {
+    width: 2.25rem;
+    border-radius: 6px;
+    border-color: #d3d3d3;
+    background: #fff;
+}
+
+.dark .adobe-login-page .fi-one-time-code-input-ctn > .fi-one-time-code-input-digit-field {
+    border-color: rgb(255 255 255 / 0.2);
+    background: rgb(255 255 255 / 0.05);
+}
+
+.adobe-login-page .fi-one-time-code-input-ctn > .fi-one-time-code-input-digit-field.fi-active {
+    border-color: #1473e6;
+    box-shadow: 0 0 0 2px rgb(20 115 230 / 0.25);
+}
+
+.adobe-login-page input[type='text'].fi-one-time-code-input {
+    color: #2c2c2c;
+}
+
+.dark .adobe-login-page input[type='text'].fi-one-time-code-input {
+    color: #fff;
+}

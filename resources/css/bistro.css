@@ -1,0 +1,717 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: var(--bistro-font-body);
+}
+
+.bistro-container {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+:root {
+    --v2-ink: var(--bistro-color-text);
+    --v2-muted: color-mix(in srgb, var(--bistro-color-text) 66%, #ffffff);
+    --v2-surface: #f3f6fb;
+    --v2-card: #ffffff;
+    --v2-line: #d7dee8;
+    --v2-accent: var(--bistro-color-primary);
+    --v2-accent-2: var(--bistro-color-secondary);
+    --v2-glow: 124 92 255;
+}
+
+.bistro-main-header-inner {
+    @apply grid items-center gap-4 lg:grid-cols-[1fr_auto];
+}
+
+.bistro-main-nav {
+    @apply flex items-center justify-between gap-6 lg:min-w-[34rem];
+}
+
+.bistro-main-nav-links {
+    @apply hidden items-center gap-10 md:flex;
+}
+
+.bistro-main-nav-link {
+    @apply text-[0.72rem] font-semibold uppercase tracking-[0.26em] text-slate-500 transition-colors hover:text-[var(--v2-ink)];
+}
+
+.bistro-main-nav-cta {
+    @apply inline-flex h-11 items-center justify-center rounded-full px-7 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white transition hover:brightness-105;
+    background: linear-gradient(90deg, var(--v2-accent), #9473ff);
+}
+
+/* Titres : --bistro-font-heading injecté depuis le thème tenant (Filament) */
+.bistro-title {
+    font-family: var(--bistro-font-heading), system-ui, sans-serif;
+    @apply font-bold tracking-tight;
+}
+
+.bistro-eyebrow {
+    @apply inline-flex rounded-full px-3 py-1 text-xs font-semibold tracking-wide;
+    background: color-mix(in srgb, var(--bistro-color-primary) 14%, white);
+    color: var(--bistro-color-primary);
+}
+
+.bistro-card {
+    @apply rounded-3xl border border-stone-200/90 bg-white shadow-sm;
+    box-shadow:
+        0 1px 2px rgb(0 0 0 / 0.04),
+        0 4px 24px rgb(0 0 0 / 0.04);
+}
+
+.bistro-section-card {
+    @apply border p-8 md:p-10 lg:p-12;
+    background: linear-gradient(180deg, #fff 0%, #fdfefe 100%);
+    border-color: var(--v2-line);
+    border-radius: 1.25rem;
+    box-shadow:
+        0 20px 50px rgb(16 20 24 / 0.07),
+        0 4px 20px rgb(124 92 255 / 0.05);
+}
+
+.v2-section-shell {
+    position: relative;
+    isolation: isolate;
+}
+
+.v2-section-shell::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 1.35rem;
+    padding: 1px;
+    background: linear-gradient(125deg, rgb(var(--v2-glow) / 0.28), rgb(32 197 186 / 0.24), transparent 58%);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.bistro-section-header {
+    @apply mb-8 border-b pb-6;
+    border-color: var(--v2-line);
+}
+
+.bistro-section-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.16em] text-stone-500;
+}
+
+.bistro-section-title {
+    font-family: var(--bistro-font-heading), system-ui, sans-serif;
+    @apply mt-2 text-2xl font-bold tracking-tight text-stone-900 md:text-3xl;
+}
+
+.bistro-section-intro {
+    @apply mt-3 max-w-3xl text-sm leading-relaxed text-stone-600 md:text-base;
+}
+
+/* Direction artistique issue du ZIP stitch_restaurant_website_structure */
+.epicure-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.28em];
+    color: var(--v2-accent);
+}
+
+.epicure-display {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    @apply text-4xl font-semibold tracking-[-0.03em] md:text-5xl lg:text-6xl;
+    color: var(--v2-ink);
+    line-height: 1.02;
+    text-wrap: balance;
+}
+
+.v2-display {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-size: clamp(2rem, 4.2vw, 4rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    color: var(--v2-ink);
+    text-wrap: balance;
+}
+
+.bistro-accent-section {
+    @apply relative;
+}
+
+.bistro-gold-line {
+    @apply h-px w-24;
+    background: linear-gradient(90deg, var(--v2-accent), var(--v2-accent-2));
+}
+
+.epicure-panel {
+    @apply rounded-xl bg-[color-mix(in_srgb,var(--bistro-color-primary)_4%,white)] p-6 md:p-8;
+}
+
+.epicure-quote {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    @apply text-2xl italic leading-snug text-stone-900 md:text-3xl;
+}
+
+.epicure-fade-top {
+    background: linear-gradient(to top, rgb(28 28 25 / 0.58), transparent 60%);
+}
+
+/* Bloc « Carte signature » : texte sur fond sombre */
+.bistro-carte-narrative-title {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    text-wrap: balance;
+    @apply text-[1.85rem] font-semibold tracking-[-0.02em] text-white sm:text-[2.1rem] md:text-4xl;
+    line-height: 1.12;
+}
+
+.bistro-carte-narrative-body {
+    @apply text-[0.97rem] leading-[1.82] text-slate-700 md:text-base;
+}
+
+.bistro-carte-narrative-body p {
+    @apply text-pretty;
+}
+
+.bistro-carte-narrative-body a {
+    @apply font-semibold underline underline-offset-4 transition hover:opacity-80;
+    color: var(--v2-accent);
+    text-decoration-color: color-mix(in srgb, var(--v2-accent) 38%, white);
+}
+
+/* Bloc « Notre histoire » : éditorial, photo + texte */
+.bistro-manifesto-eyebrow {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.26em] text-stone-500;
+    color: color-mix(in srgb, var(--bistro-color-primary) 62%, rgb(120 113 108));
+}
+
+.bistro-manifesto-title {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    @apply text-[1.9rem] font-semibold tracking-[-0.02em] text-stone-900 sm:text-[2.2rem] md:text-[2.6rem];
+    line-height: 1.08;
+}
+
+.bistro-manifesto-lead p {
+    @apply text-pretty text-lg leading-[1.75] md:text-xl;
+    color: #1a1614;
+}
+
+.bistro-manifesto-body p {
+    @apply text-pretty text-base leading-[1.8];
+    color: var(--v2-muted);
+}
+
+.bistro-manifesto-signature {
+    @apply text-sm font-medium not-italic tracking-wide text-stone-500;
+}
+
+.bistro-reviews-quote {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    @apply text-xl italic leading-relaxed md:text-2xl;
+    color: var(--v2-ink);
+}
+
+.bistro-accent-card {
+    @apply border bg-white/95;
+    border-color: var(--v2-line);
+    border-radius: 1rem;
+    box-shadow: 0 14px 30px rgb(16 20 24 / 0.06);
+}
+
+.v2-image-frame {
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--v2-accent) 24%, #d7dee8);
+    box-shadow:
+        0 16px 44px rgb(16 20 24 / 0.12),
+        0 2px 0 rgb(255 255 255 / 0.6) inset;
+}
+
+.bistro-section-soft {
+    background:
+        radial-gradient(120% 120% at 0% 0%, rgb(124 92 255 / 0.08) 0%, transparent 52%),
+        radial-gradient(120% 120% at 100% 20%, rgb(32 197 186 / 0.09) 0%, transparent 50%),
+        var(--v2-surface);
+}
+
+.bistro-section-plain {
+    background: #fff;
+}
+
+.bistro-text-lead {
+    @apply mx-auto max-w-3xl text-base leading-relaxed md:text-lg;
+    color: var(--v2-muted);
+}
+
+.tripadvisor-shell {
+    @apply border bg-white p-5 md:p-7;
+    border-color: var(--v2-line);
+    border-radius: 1rem;
+}
+
+.tripadvisor-shell-header {
+    @apply mb-5 border-b border-stone-200/80 pb-4;
+}
+
+.tripadvisor-shell-title {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    @apply text-2xl md:text-3xl;
+    color: var(--v2-ink);
+}
+
+.tripadvisor-shell-subtitle {
+    @apply mt-2 max-w-2xl text-sm leading-relaxed;
+    color: var(--v2-muted);
+}
+
+.tripadvisor-shell-cta {
+    @apply inline-flex rounded-full border bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition;
+    color: var(--v2-ink);
+    border-color: color-mix(in srgb, var(--v2-accent) 32%, #d7dee8);
+}
+
+.tripadvisor-shell-cta:hover {
+    color: var(--v2-ink);
+    border-color: var(--v2-accent);
+    background: #f3efff;
+}
+
+.tripadvisor-shell-widgets {
+    @apply rounded-xl border border-stone-200/80 bg-white p-4 md:p-5;
+}
+
+.tripadvisor-widget-box {
+    @apply border bg-stone-50/40 p-3;
+    border-color: rgb(231 229 228 / 0.7);
+}
+
+.tripadvisor-widget-box .TA_links {
+    @apply m-0 list-none p-0;
+}
+
+.tripadvisor-widget-box .TA_links li {
+    @apply m-0 p-0;
+}
+
+.tripadvisor-widget-box .TA_links a {
+    @apply text-sm font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition hover:text-[var(--bistro-color-primary)] hover:decoration-[var(--bistro-color-primary)];
+}
+
+.bistro-btn-primary {
+    @apply inline-flex h-12 min-w-[10rem] items-center justify-center rounded-full px-8 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:opacity-95 active:scale-[0.98];
+    background: linear-gradient(90deg, var(--v2-accent), #9473ff);
+    box-shadow: 0 10px 24px rgb(var(--v2-glow) / 0.28);
+}
+
+.bistro-btn-secondary {
+    @apply inline-flex h-12 min-w-[10rem] items-center justify-center rounded-full border bg-white px-8 text-xs font-semibold uppercase tracking-[0.2em] transition-[transform,background-color] hover:bg-slate-50 active:scale-[0.98];
+    color: var(--v2-ink);
+    border-color: var(--v2-line);
+}
+
+.v2-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--v2-accent) 26%, #d7dee8);
+    background: #fff;
+    color: var(--v2-ink);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.9rem;
+}
+
+.v2-btn-ghost-light {
+    @apply inline-flex h-12 min-w-[10rem] items-center justify-center rounded-full border px-8 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10 active:scale-[0.98];
+    border-color: rgb(255 255 255 / 0.42);
+    background: rgb(255 255 255 / 0.03);
+}
+
+/**
+ * Corps de texte : --bistro-font-body (Google Fonts OFL / Apache ou système).
+ */
+.bistro-body {
+    --bistro-surface-page: #f3f6fb;
+    --bistro-surface-hero: color-mix(in srgb, var(--bistro-color-primary) 6%, #fafafa);
+    --bistro-surface-manifesto: transparent;
+    --bistro-surface-features: transparent;
+    --bistro-foreground-on-secondary: #fafafa;
+
+    font-family: var(--bistro-font-body), system-ui, sans-serif;
+    background-color: var(--bistro-surface-page);
+    color: var(--bistro-color-text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------------------
+   Theme: Bakery Noir
+---------------------------- */
+.theme-noir {
+    background: #111318;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.theme-noir-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    border-bottom: 1px solid rgb(255 255 255 / 0.14);
+    background: rgb(15 17 22 / 0.9);
+    backdrop-filter: blur(8px);
+}
+
+.theme-noir-brand {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-size: clamp(1.5rem, 2.8vw, 1.95rem);
+    color: #fff;
+}
+
+.theme-noir-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.theme-noir-nav a {
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.86);
+}
+
+.theme-noir-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.theme-noir-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(130deg, rgb(0 0 0 / 0.75), rgb(0 0 0 / 0.5));
+}
+
+.theme-noir-btn-primary {
+    display: inline-flex;
+    height: 2.5rem;
+    min-width: 8.5rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--bistro-color-primary);
+    padding: 0 1.2rem;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.theme-noir-btn-secondary {
+    display: inline-flex;
+    height: 2.5rem;
+    min-width: 8.5rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(255 255 255 / 0.42);
+    padding: 0 1.2rem;
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.theme-noir-section {
+    color: #1f1c19;
+}
+
+.theme-noir-title-center {
+    text-align: center;
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height: 1.05;
+    color: #1d1814;
+}
+
+.theme-noir-product-card {
+    border: 1px solid #2f343f;
+    background: #17181d;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+}
+
+.theme-noir-product-image {
+    overflow: hidden;
+    border: 1px solid #3f4552;
+    aspect-ratio: 4/3;
+    background: #0f1116;
+}
+
+.theme-noir-product-image img,
+.theme-noir-tile img,
+.theme-noir-featured-media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.theme-noir-add {
+    display: inline-flex;
+    height: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--bistro-color-primary);
+    padding: 0 0.6rem;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.theme-noir-promo {
+    background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--bistro-color-primary) 18%, #ffffff),
+        color-mix(in srgb, var(--bistro-color-secondary) 14%, #ffffff)
+    );
+    border-top: 1px solid color-mix(in srgb, var(--bistro-color-primary) 24%, #ffffff);
+    border-bottom: 1px solid color-mix(in srgb, var(--bistro-color-secondary) 20%, #ffffff);
+}
+
+.theme-noir-tile {
+    overflow: hidden;
+    border: 1px solid #d9cec4;
+    background: #fff;
+    aspect-ratio: 1/1;
+    border-radius: 0.25rem;
+}
+
+.theme-noir-about-band {
+    background: linear-gradient(
+        130deg,
+        color-mix(in srgb, var(--bistro-color-secondary) 78%, #0f1013),
+        color-mix(in srgb, var(--bistro-color-primary) 34%, #16171d)
+    );
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.theme-noir-featured-card {
+    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 18%, #dcd2c8);
+    background: #fff;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+}
+
+.theme-noir-featured-media {
+    overflow: hidden;
+    border: 1px solid #e4dad0;
+    aspect-ratio: 4/3;
+    background: #f3f0ec;
+}
+
+/* ---------------------------
+   Theme: Lumen Atelier
+---------------------------- */
+.theme-lumen {
+    background: #f8f4ef;
+    color: #2a241f;
+    line-height: 1.68;
+}
+
+.theme-lumen-header {
+    border-bottom: 1px solid #e7dbcf;
+    background: #fdfaf6;
+}
+
+.theme-lumen-brand {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.05rem);
+    color: #221c17;
+}
+
+.theme-lumen-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.05rem;
+}
+
+.theme-lumen-nav a {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #4f433a;
+}
+
+.theme-lumen-nav a:focus-visible,
+.theme-lumen-nav a:hover {
+    color: #2a241f;
+    outline: none;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+}
+
+.theme-lumen-cta {
+    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 34%, #ffffff);
+    padding: 0.52rem 0.95rem;
+    color: #2a241f !important;
+    background: #fffaf4;
+}
+
+.theme-lumen-hero {
+    background: #f7efe7;
+}
+
+.theme-lumen-hero-media {
+    overflow: hidden;
+    border: 1px solid #e6d7c7;
+    border-radius: 1rem;
+    box-shadow: 0 16px 35px rgb(56 42 31 / 0.12);
+}
+
+.theme-lumen-hero-media img,
+.theme-lumen-card-media img,
+.theme-lumen-tile img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.theme-lumen-btn-primary {
+    display: inline-flex;
+    height: 2.6rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--bistro-color-primary);
+    padding: 0 1.25rem;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 0.2rem;
+}
+
+.theme-lumen-btn-secondary {
+    display: inline-flex;
+    height: 2.6rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 24%, #d9c9b7);
+    padding: 0 1.25rem;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2f2822;
+    border-radius: 0.2rem;
+}
+
+.theme-lumen-block {
+    background: #fdfaf6;
+}
+
+.theme-lumen-cream {
+    background: color-mix(in srgb, var(--bistro-color-primary) 9%, #f9f6f2);
+}
+
+.theme-lumen-title {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-size: clamp(2.15rem, 4.2vw, 3.5rem);
+    line-height: 1.04;
+    color: #221c17;
+}
+
+.theme-lumen-card {
+    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 14%, #e6d9cb);
+    background: #fff;
+    border-radius: 0.9rem;
+    padding: 1.1rem;
+    box-shadow: 0 8px 22px rgb(67 45 28 / 0.08);
+}
+
+.theme-lumen-card-media {
+    overflow: hidden;
+    border: 1px solid #ebded0;
+    border-radius: 0.8rem;
+    aspect-ratio: 4/3;
+    background: #f7f2ec;
+}
+
+.theme-lumen-tile {
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 14%, #e6d9cb);
+    border-radius: 0.7rem;
+    aspect-ratio: 1/1;
+    background: #fff;
+}
+
+.theme-lumen-promo {
+    background: linear-gradient(
+        120deg,
+        color-mix(in srgb, var(--bistro-color-secondary) 80%, #1c1612),
+        color-mix(in srgb, var(--bistro-color-primary) 40%, #201911)
+    );
+    border-top: 1px solid rgb(255 255 255 / 0.06);
+    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+}
+
+.theme-lumen-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--bistro-color-secondary) 70%, #5a473a);
+}
+
+.theme-lumen-heading-xl,
+.theme-lumen-heading-lg,
+.theme-lumen-heading-md {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    color: #221c17;
+    letter-spacing: -0.02em;
+}
+
+.theme-lumen-heading-xl {
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    line-height: 0.96;
+}
+
+.theme-lumen-heading-lg {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.02;
+}
+
+.theme-lumen-heading-md {
+    font-size: clamp(1.55rem, 3vw, 2.05rem);
+    line-height: 1.1;
+}
+
+.theme-lumen-copy {
+    color: #4e4339;
+    line-height: 1.75;
+}
+
+.theme-lumen-price {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--bistro-color-primary) 82%, #8c5f3e);
+}
+
+.theme-noir section > .bistro-container,
+.theme-lumen section > .bistro-container {
+    padding-top: clamp(3.2rem, 5.8vw, 5.6rem);
+    padding-bottom: clamp(3.2rem, 5.8vw, 5.6rem);
+}
