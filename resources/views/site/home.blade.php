@@ -126,7 +126,7 @@
         $manifestoFirst = $manifestoPos !== false && ($heroPos === false || $manifestoPos < $heroPos);
     @endphp
 
-    <div class="palazzo-root">
+    <div class="palazzo-root palazzo-home">
         <header class="palazzo-nav">
             <div class="palazzo-nav__inner">
                 <a href="{{ route('site.home') }}" class="palazzo-brand">
@@ -255,10 +255,10 @@
                         <h2 class="palazzo-title-md">{{ $galleryTitle }}</h2>
                         <p class="palazzo-copy">{{ $galleryIntro }}</p>
                     </div>
-                    <div class="palazzo-gallery__mosaic">
+                    <div class="palazzo-gallery__grid">
                         @foreach($carousel as $index => $card)
                             @if(filled($card['image_url'] ?? null))
-                                <figure class="palazzo-gallery__tile {{ $index % 5 === 0 ? 'is-wide' : '' }} {{ $index % 7 === 0 ? 'is-tall' : '' }}">
+                                <figure class="palazzo-gallery__item {{ $index % 5 === 0 ? 'is-wide' : '' }} {{ $index % 7 === 0 ? 'is-tall' : '' }}">
                                     <img src="{{ $card['image_url'] }}" alt="{{ $card['image_alt'] ?? 'Photo de la galerie du restaurant' }}" loading="lazy" />
                                 </figure>
                             @endif
