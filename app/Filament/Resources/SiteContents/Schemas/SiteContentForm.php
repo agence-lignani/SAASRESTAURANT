@@ -81,13 +81,6 @@ class SiteContentForm
             self::pageSection('home', 'hero', Section::make('Accueil — bandeau principal')
                 ->description('Première impression : nom du lieu, accroche, photo et accès rapide à la carte ou à la réservation.')
                 ->schema([
-                    self::variantSelect('content.home.hero.variant', 'Variante visuelle', [
-                        'hero_split_editorial' => 'Hero Split Editorial',
-                        'hero_full_bleed_cinema' => 'Hero Full Bleed Cinema',
-                        'hero_minimal_mono' => 'Hero Minimal Mono',
-                        'hero_card_glass' => 'Hero Card Glass',
-                        'bakery_hero_classic' => 'Bakery Hero Classic',
-                    ]),
                     FilamentImageUpload::withAutomaticCompression(
                         FileUpload::make('content.home.hero.image_url')
                             ->label('Image du hero')
@@ -127,12 +120,6 @@ class SiteContentForm
             self::pageSection('home', 'manifesto', Section::make('À propos / Histoire / Chef')
                 ->description('Section « À propos du restaurant » : sur-titre, récit, visuel et lien.')
                 ->schema([
-                    self::variantSelect('content.home.manifesto.variant', 'Variante visuelle', [
-                        'about_image_stack' => 'About Image Stack',
-                        'about_chapter_layout' => 'About Chapter Layout',
-                        'about_cinematic_panel' => 'About Cinematic Panel',
-                        'bakery_about_band' => 'Bakery About Band',
-                    ]),
                     TextInput::make('content.home.manifesto.eyebrow')
                         ->label('Sur-titre (ex. Notre histoire)')
                         ->placeholder('Notre histoire')
@@ -164,10 +151,6 @@ class SiteContentForm
             self::pageSection('home', 'carte_narrative', Section::make('Carte mise en avant (plats phares)')
                 ->description('Section « Carte signature » : titre narratif, visuel, paragraphes et CTA.')
                 ->schema([
-                    self::variantSelect('content.home.carte_narrative.variant', 'Variante visuelle', [
-                        'menu_featured_primary' => 'Menu Featured Primary',
-                        'menu_grid_minimal' => 'Menu Grid Minimal',
-                    ]),
                     TextInput::make('content.home.carte_narrative.eyebrow')
                         ->label('Sur-titre (petit libellé)')
                         ->placeholder('Carte signature')
@@ -199,12 +182,6 @@ class SiteContentForm
             self::pageSection('home', 'menus', Section::make('Menus & formules')
                 ->description('Présentez les formules phares (midi, soir, brunch, groupe).')
                 ->schema([
-                    self::variantSelect('content.home.menus.variant', 'Variante visuelle', [
-                        'menu_featured_primary' => 'Menu Featured Primary',
-                        'menu_masonry_cards' => 'Menu Masonry Cards',
-                        'menu_grid_minimal' => 'Menu Grid Minimal',
-                        'bakery_top_products' => 'Bakery Top Products',
-                    ]),
                     TextInput::make('content.home.menus.heading')->label('Titre')->placeholder('Signatures culinaires')->maxLength(160),
                     TextInput::make('content.home.menus.intro')->label('Introduction courte')->placeholder('Une sélection des assiettes qui racontent notre cuisine : saison, précision et générosité.')->maxLength(220)->columnSpanFull(),
                     Repeater::make('content.home.menus.items')
@@ -238,12 +215,6 @@ class SiteContentForm
             self::pageSection('home', 'gallery_highlights', Section::make('Galerie ambiance')
                 ->description('Aperçu visuel rapide sur la page d’accueil.')
                 ->schema([
-                    self::variantSelect('content.home.gallery_highlights.variant', 'Variante visuelle', [
-                        'gallery_bento' => 'Gallery Bento',
-                        'gallery_film_strip' => 'Gallery Film Strip',
-                        'gallery_collage_editorial' => 'Gallery Collage Editorial',
-                        'bakery_explore_grid' => 'Bakery Explore Grid',
-                    ]),
                     TextInput::make('content.home.gallery_highlights.heading')->label('Titre')->placeholder('L’esprit & la Maison')->maxLength(160),
                     TextInput::make('content.home.gallery_highlights.intro')->label('Introduction courte')->placeholder('Salle principale, cave, cuisine ouverte et salon : chaque espace participe à l’expérience.')->maxLength(220)->columnSpanFull(),
                     Repeater::make('content.home.gallery_highlights.items')
@@ -278,11 +249,6 @@ class SiteContentForm
             self::pageSection('home', 'espaces', Section::make('Événements & privatisation')
                 ->description('Section éditoriale (chef / équipe / reconnaissance) avec visuel.')
                 ->schema([
-                    self::variantSelect('content.home.espaces.variant', 'Variante visuelle', [
-                        'about_founder_focus' => 'About Founder Focus',
-                        'about_side_label' => 'About Side Label',
-                        'bakery_featured_treats' => 'Bakery Featured Treats',
-                    ]),
                     TextInput::make('content.home.espaces.eyebrow')->label('Sur-titre')->placeholder('Le chef')->maxLength(80),
                     TextInput::make('content.home.espaces.heading')->label('Titre')->placeholder('Antoine Dubois')->maxLength(160),
                     RichEditor::make('content.home.espaces.body')->label('Texte')->columnSpanFull(),
@@ -319,11 +285,6 @@ class SiteContentForm
             self::pageSection('home', 'reviews_widget', Section::make('Avis clients (TripAdvisor)')
                 ->description('Section « Avis » style éditorial + intégration TripAdvisor. Laissez l’URL vide pour masquer le widget.')
                 ->schema([
-                    self::variantSelect('content.home.reviews_widget.variant', 'Variante visuelle', [
-                        'reviews_card_deck' => 'Reviews Card Deck',
-                        'reviews_quote_wall' => 'Reviews Quote Wall',
-                        'reviews_split_with_widget' => 'Reviews Split With Widget',
-                    ]),
                     TextInput::make('content.home.reviews_widget.section_eyebrow')->label('Petit titre au-dessus du bloc')->placeholder('Témoignages')->maxLength(80),
                     TextInput::make('content.home.reviews_widget.heading')->label('Titre de section')->placeholder('Ce que disent nos convives')->maxLength(160),
                     TextInput::make('content.home.reviews_widget.highlight_quote')->label('Citation mise en avant')->maxLength(240)->columnSpanFull(),
@@ -360,11 +321,6 @@ class SiteContentForm
             self::pageSection('home', 'faq', Section::make('FAQ pratique')
                 ->description('Questions fréquentes affichées sur la page d’accueil.')
                 ->schema([
-                    self::variantSelect('content.home.faq.variant', 'Variante visuelle', [
-                        'faq_accordion_cards' => 'FAQ Accordion Cards',
-                        'faq_two_columns_qa' => 'FAQ Two Columns QA',
-                        'faq_minimal_lines' => 'FAQ Minimal Lines',
-                    ]),
                     TextInput::make('content.home.faq.heading')->label('Titre')->placeholder('FAQ')->maxLength(160),
                     TextInput::make('content.home.faq.intro')->label('Introduction')->placeholder('Régimes alimentaires, tenue, groupes : nous avons regroupé les réponses les plus courantes.')->maxLength(220)->columnSpanFull(),
                     Repeater::make('content.home.faq.items')
@@ -389,12 +345,6 @@ class SiteContentForm
             self::pageSection('home', 'spotlight', Section::make('CTA réservation finale')
                 ->description('Bandeau de fin de page avec image de fond et bouton de réservation.')
                 ->schema([
-                    self::variantSelect('content.home.spotlight.variant', 'Variante visuelle', [
-                        'cta_full_bleed_impact' => 'CTA Full Bleed Impact',
-                        'cta_split_action' => 'CTA Split Action',
-                        'cta_floating_card' => 'CTA Floating Card',
-                        'bakery_promo_banner' => 'Bakery Promo Banner',
-                    ]),
                     TextInput::make('content.home.spotlight.heading')->label('Titre')->placeholder('Réservez votre table')->maxLength(160),
                     RichEditor::make('content.home.spotlight.body')->label('Texte')->columnSpanFull(),
                     FilamentImageUpload::withAutomaticCompression(
@@ -415,12 +365,6 @@ class SiteContentForm
             self::pageSection('home', 'practical', Section::make('Accès, contact & horaires')
                 ->description('Infos pratiques : contact, horaires, carte Google et bouton itinéraire (adresse issue des réglages du restaurant).')
                 ->schema([
-                    self::variantSelect('content.home.practical.variant', 'Variante visuelle', [
-                        'contact_map_dominant' => 'Contact Map Dominant',
-                        'contact_info_dominant' => 'Contact Info Dominant',
-                        'contact_cards_utility' => 'Contact Cards Utility',
-                        'bakery_footer_contact' => 'Bakery Footer Contact',
-                    ]),
                     Grid::make(2)
                         ->schema([
                             TextInput::make('content.home.practical.heading')->label('Titre de la section')->maxLength(120),
@@ -482,19 +426,6 @@ class SiteContentForm
             ->maxItems(6)
             ->collapsible()
             ->addActionLabel('Ajouter un lien')
-            ->columnSpanFull();
-    }
-
-    /**
-     * @param  array<string, string>  $options
-     */
-    private static function variantSelect(string $path, string $label, array $options): Select
-    {
-        return Select::make($path)
-            ->label($label)
-            ->options($options)
-            ->searchable()
-            ->native(false)
             ->columnSpanFull();
     }
 

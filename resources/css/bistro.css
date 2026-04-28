@@ -13,6 +13,22 @@
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
 }
 
+@font-face {
+    font-family: 'Oi';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.gstatic.com/s/oi/v18/w8g4H3vNQPK1hJMImA.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Martian Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://fonts.gstatic.com/s/martianmono/v4/PX4MypEh4mJecGQ9hYQvF8QGto1Oa7iN.woff2') format('woff2');
+    font-display: swap;
+}
+
 :root {
     --v2-ink: var(--bistro-color-text);
     --v2-muted: color-mix(in srgb, var(--bistro-color-text) 66%, #ffffff);
@@ -47,7 +63,7 @@
 
 /* Titres : --bistro-font-heading injecté depuis le thème tenant (Filament) */
 .bistro-title {
-    font-family: var(--bistro-font-heading), system-ui, sans-serif;
+    font-family: "Oi", Georgia, serif;
     @apply font-bold tracking-tight;
 }
 
@@ -105,7 +121,7 @@
 }
 
 .bistro-section-title {
-    font-family: var(--bistro-font-heading), system-ui, sans-serif;
+    font-family: "Oi", Georgia, serif;
     @apply mt-2 text-2xl font-bold tracking-tight text-stone-900 md:text-3xl;
 }
 
@@ -120,7 +136,7 @@
 }
 
 .epicure-display {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     @apply text-4xl font-semibold tracking-[-0.03em] md:text-5xl lg:text-6xl;
     color: var(--v2-ink);
     line-height: 1.02;
@@ -128,7 +144,7 @@
 }
 
 .v2-display {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     font-size: clamp(2rem, 4.2vw, 4rem);
     font-weight: 600;
     letter-spacing: -0.03em;
@@ -151,7 +167,7 @@
 }
 
 .epicure-quote {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     @apply text-2xl italic leading-snug text-stone-900 md:text-3xl;
 }
 
@@ -161,7 +177,7 @@
 
 /* Bloc « Carte signature » : texte sur fond sombre */
 .bistro-carte-narrative-title {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     text-wrap: balance;
     @apply text-[1.85rem] font-semibold tracking-[-0.02em] text-white sm:text-[2.1rem] md:text-4xl;
     line-height: 1.12;
@@ -188,7 +204,7 @@
 }
 
 .bistro-manifesto-title {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     @apply text-[1.9rem] font-semibold tracking-[-0.02em] text-stone-900 sm:text-[2.2rem] md:text-[2.6rem];
     line-height: 1.08;
 }
@@ -208,7 +224,7 @@
 }
 
 .bistro-reviews-quote {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     @apply text-xl italic leading-relaxed md:text-2xl;
     color: var(--v2-ink);
 }
@@ -256,7 +272,7 @@
 }
 
 .tripadvisor-shell-title {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     @apply text-2xl md:text-3xl;
     color: var(--v2-ink);
 }
@@ -342,7 +358,7 @@
     --bistro-surface-features: transparent;
     --bistro-foreground-on-secondary: #fafafa;
 
-    font-family: var(--bistro-font-body), system-ui, sans-serif;
+    font-family: "Martian Mono", "Courier New", monospace;
     background-color: var(--bistro-surface-page);
     color: var(--bistro-color-text);
     line-height: 1.65;
@@ -368,7 +384,7 @@
 }
 
 .theme-noir-brand {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     font-size: clamp(1.5rem, 2.8vw, 1.95rem);
     color: #fff;
 }
@@ -435,7 +451,7 @@
 
 .theme-noir-title-center {
     text-align: center;
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     font-size: clamp(2.1rem, 4.4vw, 3.4rem);
     line-height: 1.05;
     color: #1d1814;
@@ -534,7 +550,7 @@
 }
 
 .theme-lumen-brand {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     font-size: clamp(1.6rem, 2.8vw, 2.05rem);
     color: #221c17;
 }
@@ -626,7 +642,7 @@
 }
 
 .theme-lumen-title {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     font-size: clamp(2.15rem, 4.2vw, 3.5rem);
     line-height: 1.04;
     color: #221c17;
@@ -677,7 +693,7 @@
 .theme-lumen-heading-xl,
 .theme-lumen-heading-lg,
 .theme-lumen-heading-md {
-    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-family: "Oi", Georgia, serif;
     color: #221c17;
     letter-spacing: -0.02em;
 }
