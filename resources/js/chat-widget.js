@@ -8,6 +8,10 @@ export function initBistroChatWidget() {
     }
 
     const endpoint = root.dataset.endpoint;
+    const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? '';
+    if (!csrf) {
+        return;
+    }
     const position = root.dataset.position === 'bottom-start' ? 'bottom-start' : 'bottom-end';
     const restaurantId = root.dataset.restaurantId ?? '0';
     const storageKey = `bistro_chat_token_${restaurantId}_${window.location.host}`;
@@ -65,8 +69,6 @@ export function initBistroChatWidget() {
 
     root.appendChild(panel);
     root.appendChild(toggleBtn);
-
-    const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ?? '';
 
     const logEl = panel.querySelector('#bistro-chat-log');
     const formEl = panel.querySelector('#bistro-chat-form');
@@ -135,38 +137,49 @@ export function initBistroChatWidget() {
         }
 
         try {
-            const res = await window.axios.post(
-                endpoint,
-                {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf,
+                    'X-Requested-With': 'XMLHttpRequest',
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({
                     message: text,
                     session_token: sessionToken || null,
-                },
-                {
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrf,
-                        'X-Requested-With': 'XMLHttpRequest',
-                    },
-                },
-            );
+                }),
+            });
 
-            const data = res.data;
+            if (!res.ok) {
+                let serverMessage = null;
+                try {
+                    const errJson = await res.json();
+                    serverMessage = errJson?.message ?? null;
+                } catch {
+                    // no-op
+                }
+
+                const msg =
+                    serverMessage ??
+                    (res.status === 429
+                        ? 'Trop de requêtes. Patientez un instant.'
+                        : res.status === 503
+                          ? 'Service temporairement indisponible.'
+                          : 'Impossible d’envoyer le message.');
+                showErr(typeof msg === 'string' ? msg : 'Erreur.');
+                return;
+            }
+
+            const data = await res.json();
             sessionToken = data.session_token ?? sessionToken;
             if (sessionToken) {
                 localStorage.setItem(storageKey, sessionToken);
             }
             appendBubble('assistant', data.reply ?? '');
         } catch (err) {
-            const status = err?.response?.status;
-            const msg =
-                err?.response?.data?.message ??
-                (status === 429
-                    ? 'Trop de requêtes. Patientez un instant.'
-                    : status === 503
-                      ? 'Service temporairement indisponible.'
-                      : 'Impossible d’envoyer le message.');
-            showErr(typeof msg === 'string' ? msg : 'Erreur.');
+            showErr('Impossible d’envoyer le message.');
         } finally {
             inputEl.disabled = false;
             if (submitBtn instanceof HTMLButtonElement) {
