@@ -25,6 +25,10 @@ class SiteContentDefaults
                     'eyebrow' => 'Depuis 1985',
                     'title' => $restaurant->name,
                     'subtitle' => $subtitle,
+                    'brand_label' => 'PALAZZO!',
+                    'nav_menu_label' => 'Menu',
+                    'nav_about_label' => 'About',
+                    'nav_contact_label' => 'Contact',
                     'image_url' => $mockHeroImage,
                     'image_alt' => 'Ambiance de la salle et service du restaurant '.$restaurant->name,
                     'cta_buttons' => [
@@ -66,6 +70,8 @@ class SiteContentDefaults
                 'menus' => [
                     'variant' => 'bakery_top_products',
                     'heading' => 'Signatures culinaires',
+                    'chip_label' => 'LEEK & CHORIZO',
+                    'section_title' => 'Our Pizzas',
                     'intro' => 'Une sélection des assiettes qui racontent notre cuisine : saison, précision et générosité.',
                     'items' => [
                         ['title' => 'Foie gras poêlé', 'price' => '28 €', 'description' => 'Accompagné de chutney de figues et pain d’épices.', 'image_url' => 'https://images.unsplash.com/photo-1775498017681-b95215dd704f?w=1200&q=80&auto=format&fit=crop', 'image_alt' => 'Foie gras poêlé et dressage gastronomique'],
@@ -88,6 +94,15 @@ class SiteContentDefaults
                     'links' => [
                         ['label' => 'Réserver une table', 'href' => route('site.reservation')],
                         ['label' => 'Nous contacter', 'href' => route('site.contact')],
+                    ],
+                ],
+                'values' => [
+                    'heading' => 'Heavy on the good stuff, easy on the sweet stuff',
+                    'items' => [
+                        ['title' => 'Prodotti', 'text' => 'Ingrédients frais et sélectionnés pour garder l’authenticité napolitaine.'],
+                        ['title' => 'Forno', 'text' => 'Four à bois pour une cuisson vive et croustillante.'],
+                        ['title' => 'Tradizione', 'text' => 'Recettes transmises de génération en génération.'],
+                        ['title' => 'Passione', 'text' => 'Chaque pizza est montée avec précision et caractère.'],
                     ],
                 ],
                 'gallery_highlights' => [
@@ -170,6 +185,7 @@ class SiteContentDefaults
                     'heading' => 'Réservez votre table',
                     'body' => '<p>Laissez-vous séduire par une expérience gastronomique d’exception au cœur du quartier.</p>',
                     'image_url' => 'https://images.unsplash.com/photo-1775138174727-43996fc57c0f?w=1600&q=80&auto=format&fit=crop',
+                    'image_alt' => 'Pizza cuite au feu de bois, plan serré sur la texture et la garniture.',
                     'buttons' => [
                         ['label' => 'Réserver maintenant', 'href' => route('site.reservation')],
                     ],
@@ -179,6 +195,16 @@ class SiteContentDefaults
                     'heading' => 'Venir au restaurant',
                     'contact_title' => 'Nous joindre',
                     'opening_title' => 'Horaires d’ouverture',
+                    'opening_lines' => [],
+                    'footer_map_label' => 'Site map',
+                    'footer_find_label' => 'Find us',
+                    'footer_hours_label' => 'Hours',
+                    'footer_meta_lines' => [
+                        'A template by figma.to.website designed by Alexis Oulès.',
+                        'Follow us on x.com',
+                        'Say hello: sales@figweb.com',
+                        '2025 - divRIOTS',
+                    ],
                 ],
             ],
             'carte' => [

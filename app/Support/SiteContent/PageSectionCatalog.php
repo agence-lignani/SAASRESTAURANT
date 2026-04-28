@@ -14,6 +14,7 @@ final class PageSectionCatalog
                 'hero' => 'Accueil — bandeau principal',
                 'manifesto' => 'À propos du restaurant',
                 'menus' => 'Menus & formules',
+                'values' => 'Bloc valeurs / engagements',
                 'reviews_widget' => 'Avis clients',
                 'espaces' => 'Le chef',
                 'faq' => 'FAQ pratique',

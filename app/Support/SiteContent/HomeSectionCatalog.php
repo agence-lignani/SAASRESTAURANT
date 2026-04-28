@@ -10,7 +10,7 @@ final class HomeSectionCatalog
     /** @return list<string> */
     public static function keys(): array
     {
-        return ['hero', 'manifesto', 'menus', 'reviews_widget', 'espaces', 'faq', 'carte_narrative', 'gallery_highlights', 'spotlight', 'practical'];
+        return ['hero', 'manifesto', 'menus', 'values', 'reviews_widget', 'espaces', 'faq', 'carte_narrative', 'gallery_highlights', 'spotlight', 'practical'];
     }
 
     /**
@@ -23,6 +23,7 @@ final class HomeSectionCatalog
             'manifesto' => 'À propos du restaurant',
             'carte_narrative' => 'Carte signature',
             'menus' => 'Menus & formules',
+            'values' => 'Valeurs / engagements',
             'gallery_highlights' => 'Galerie ambiance',
             'reviews_widget' => 'Avis clients',
             'espaces' => 'Le chef',

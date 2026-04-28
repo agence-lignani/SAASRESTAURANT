@@ -108,6 +108,25 @@ class SiteContentForm
                         ->placeholder('Le Coin Parisien')
                         ->maxLength(160)
                         ->columnSpanFull(),
+                    Grid::make(2)
+                        ->schema([
+                            TextInput::make('content.home.hero.brand_label')
+                                ->label('Nom/Logo en navigation')
+                                ->placeholder('PALAZZO!')
+                                ->maxLength(80),
+                            TextInput::make('content.home.hero.nav_menu_label')
+                                ->label('Lien navigation: menu')
+                                ->placeholder('Menu')
+                                ->maxLength(40),
+                            TextInput::make('content.home.hero.nav_about_label')
+                                ->label('Lien navigation: à propos')
+                                ->placeholder('About')
+                                ->maxLength(40),
+                            TextInput::make('content.home.hero.nav_contact_label')
+                                ->label('Lien navigation: contact')
+                                ->placeholder('Contact')
+                                ->maxLength(40),
+                        ]),
                     RichEditor::make('content.home.hero.subtitle')
                         ->label('Sous-titre')
                         ->placeholder('Une table où l’on célèbre le marché : produits d’exception et service attentionné.')
@@ -184,6 +203,17 @@ class SiteContentForm
                 ->schema([
                     TextInput::make('content.home.menus.heading')->label('Titre')->placeholder('Signatures culinaires')->maxLength(160),
                     TextInput::make('content.home.menus.intro')->label('Introduction courte')->placeholder('Une sélection des assiettes qui racontent notre cuisine : saison, précision et générosité.')->maxLength(220)->columnSpanFull(),
+                    Grid::make(2)
+                        ->schema([
+                            TextInput::make('content.home.menus.chip_label')
+                                ->label('Libellé pastille (section discover)')
+                                ->placeholder('LEEK & CHORIZO')
+                                ->maxLength(80),
+                            TextInput::make('content.home.menus.section_title')
+                                ->label('Titre section carte (liste des pizzas/plats)')
+                                ->placeholder('Our Pizzas')
+                                ->maxLength(160),
+                        ]),
                     Repeater::make('content.home.menus.items')
                         ->label('Plats / signatures')
                         ->schema([
@@ -208,6 +238,29 @@ class SiteContentForm
                         ->columns(1)
                         ->columnSpanFull(),
                     self::ctaButtonsRepeater('content.home.menus.cta_buttons', 'Boutons'),
+                ])
+                ->columns(1)
+                ->compact(false)),
+
+            self::pageSection('home', 'values', Section::make('Bloc valeurs / engagements')
+                ->description('Titre et cartes de valeurs affichés dans le bloc vert.')
+                ->schema([
+                    TextInput::make('content.home.values.heading')
+                        ->label('Titre du bloc')
+                        ->placeholder('Heavy on the good stuff, easy on the sweet stuff')
+                        ->maxLength(180)
+                        ->columnSpanFull(),
+                    Repeater::make('content.home.values.items')
+                        ->label('Cartes valeurs')
+                        ->schema([
+                            TextInput::make('title')->label('Titre')->required()->maxLength(120),
+                            TextInput::make('text')->label('Description')->required()->maxLength(240)->columnSpanFull(),
+                        ])
+                        ->minItems(0)
+                        ->maxItems(8)
+                        ->defaultItems(0)
+                        ->columns(1)
+                        ->columnSpanFull(),
                 ])
                 ->columns(1)
                 ->compact(false)),
@@ -357,6 +410,10 @@ class SiteContentForm
                             ->imageEditor()
                             ->columnSpanFull()
                     ),
+                    TextInput::make('content.home.spotlight.image_alt')
+                        ->label('Texte alternatif de l’image')
+                        ->maxLength(180)
+                        ->columnSpanFull(),
                     self::linkButtonsRepeater('content.home.spotlight.buttons', 'Boutons'),
                 ])
                 ->columns(1)
@@ -371,6 +428,29 @@ class SiteContentForm
                             TextInput::make('content.home.practical.contact_title')->label('Titre colonne contact')->placeholder('Nous joindre')->maxLength(60),
                             TextInput::make('content.home.practical.opening_title')->label('Titre colonne horaires')->placeholder('Horaires d’ouverture')->maxLength(60),
                         ]),
+                    Repeater::make('content.home.practical.opening_lines')
+                        ->label('Lignes horaires (optionnel)')
+                        ->helperText('Si vide, les horaires du restaurant configurés dans le backoffice sont utilisés automatiquement.')
+                        ->simple(
+                            TextInput::make('line')->maxLength(120)
+                        )
+                        ->minItems(0)
+                        ->maxItems(14)
+                        ->columnSpanFull(),
+                    Grid::make(3)
+                        ->schema([
+                            TextInput::make('content.home.practical.footer_map_label')->label('Footer: titre colonne navigation')->placeholder('Site map')->maxLength(80),
+                            TextInput::make('content.home.practical.footer_find_label')->label('Footer: titre colonne contact')->placeholder('Find us')->maxLength(80),
+                            TextInput::make('content.home.practical.footer_hours_label')->label('Footer: titre colonne horaires')->placeholder('Hours')->maxLength(80),
+                        ]),
+                    Repeater::make('content.home.practical.footer_meta_lines')
+                        ->label('Footer: lignes bas de page')
+                        ->simple(
+                            TextInput::make('line')->maxLength(180)
+                        )
+                        ->minItems(0)
+                        ->maxItems(6)
+                        ->columnSpanFull(),
                 ])
                 ->columns(1)
                 ->compact(false)),
