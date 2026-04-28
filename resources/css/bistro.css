@@ -1625,7 +1625,7 @@
 }
 
 .palazzo-home .palazzo-values {
-    padding: clamp(4rem, 9vw, 7.4rem) 1rem;
+    padding: clamp(3.2rem, 7.8vw, 6rem) 1rem;
 }
 
 .palazzo-home .palazzo-values .palazzo-title-md {
@@ -1634,31 +1634,31 @@
 }
 
 .palazzo-home .palazzo-values__grid {
-    margin-top: clamp(2rem, 5vw, 3rem);
+    margin-top: clamp(1.55rem, 3.8vw, 2.3rem);
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.35rem;
+    gap: 1rem;
 }
 
 .palazzo-home .palazzo-value {
-    padding: 1.2rem 1.05rem 1.25rem;
+    padding: 0.92rem 0.9rem 0.95rem;
 }
 
 .palazzo-home .palazzo-value__icon {
-    height: 2.8rem;
-    width: 2.8rem;
+    height: 2.35rem;
+    width: 2.35rem;
 }
 
 .palazzo-home .palazzo-value h3 {
-    margin-top: 0.88rem;
-    font-size: 1.05rem;
+    margin-top: 0.66rem;
+    font-size: 0.95rem;
 }
 
 .palazzo-home .palazzo-value p {
-    margin-top: 0.64rem;
+    margin-top: 0.45rem;
     color: rgb(193 229 214 / 0.86);
-    font-size: 0.73rem;
-    line-height: 1.62;
+    font-size: 0.68rem;
+    line-height: 1.5;
 }
 
 .palazzo-home .palazzo-carousel {

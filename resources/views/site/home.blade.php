@@ -188,7 +188,7 @@
 
             <section class="palazzo-values">
                 <div class="palazzo-shell">
-                    <h2 class="palazzo-title-md palazzo-center">Heavy on the good stuff, easy on the sweat stuff</h2>
+                    <h2 class="palazzo-title-md palazzo-center">Heavy on the good stuff, easy on the sweet stuff</h2>
                     <div class="palazzo-values__grid">
                         @foreach($valueCards as $value)
                             <article class="palazzo-value">
