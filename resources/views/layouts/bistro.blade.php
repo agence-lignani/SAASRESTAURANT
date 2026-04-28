@@ -10,7 +10,7 @@
     <script type="application/ld+json">@json($jsonLd)</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;700;800&family=Oi&display=swap">
     @vite(['resources/css/bistro.css', 'resources/js/app.js'])
     <style>
         :root {
