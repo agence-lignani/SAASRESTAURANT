@@ -1447,3 +1447,296 @@
     padding-top: clamp(3.2rem, 5.8vw, 5.6rem);
     padding-bottom: clamp(3.2rem, 5.8vw, 5.6rem);
 }
+
+/* ---------------------------
+   Palazzo harmony pass
+---------------------------- */
+.palazzo-home .palazzo-shell {
+    width: min(1200px, calc(100% - clamp(2rem, 5vw, 5.5rem)));
+}
+
+.palazzo-home .palazzo-main > section {
+    position: relative;
+}
+
+.palazzo-home .palazzo-nav {
+    border-bottom: 1px solid rgb(238 55 27 / 0.24);
+    background: rgb(241 232 221 / 0.94);
+    backdrop-filter: blur(8px);
+}
+
+.palazzo-home .palazzo-nav__inner {
+    height: 3.45rem;
+    padding: 0 clamp(1rem, 3vw, 2.2rem);
+}
+
+.palazzo-home .palazzo-brand {
+    font-size: clamp(1.18rem, 2vw, 1.45rem);
+    letter-spacing: 0.02em;
+}
+
+.palazzo-home .palazzo-nav__links {
+    gap: clamp(0.9rem, 2.4vw, 2.2rem);
+    font-size: 0.69rem;
+    letter-spacing: 0.13em;
+}
+
+.palazzo-home .palazzo-nav__links a {
+    opacity: 0.92;
+    transition: opacity 150ms ease;
+}
+
+.palazzo-home .palazzo-nav__links a:hover,
+.palazzo-home .palazzo-nav__links a:focus-visible {
+    opacity: 1;
+}
+
+.palazzo-home .palazzo-hero {
+    min-height: clamp(560px, 86vh, 900px);
+}
+
+.palazzo-home .palazzo-hero__content {
+    width: min(980px, calc(100% - 2.25rem));
+}
+
+.palazzo-home .palazzo-display {
+    font-size: clamp(2.5rem, 7.2vw, 6rem);
+    letter-spacing: -0.01em;
+}
+
+.palazzo-home .palazzo-hero__cta {
+    margin-top: clamp(1.15rem, 3vw, 2rem);
+    gap: 0.62rem;
+}
+
+.palazzo-home .palazzo-btn {
+    min-height: 2.25rem;
+    border-color: rgb(255 255 255 / 0.35);
+    border-radius: 999px;
+    padding: 0.48rem 1.02rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    transition:
+        transform 140ms ease,
+        box-shadow 140ms ease;
+}
+
+.palazzo-home .palazzo-btn:hover,
+.palazzo-home .palazzo-btn:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgb(0 0 0 / 0.16);
+}
+
+.palazzo-home .palazzo-phrase {
+    padding: clamp(4rem, 9vw, 7.4rem) clamp(1rem, 5.5vw, 5.8rem);
+}
+
+.palazzo-home .palazzo-phrase .palazzo-title-md {
+    margin-bottom: 1.05rem;
+    font-size: clamp(1.7rem, 3.2vw, 2.55rem);
+    color: rgb(241 232 221 / 0.9);
+}
+
+.palazzo-home .palazzo-phrase .palazzo-title-lg {
+    max-width: 19ch;
+}
+
+.palazzo-home .palazzo-discover {
+    min-height: 640px;
+}
+
+.palazzo-home .palazzo-discover__text {
+    padding: clamp(2.4rem, 6vw, 6.2rem);
+}
+
+.palazzo-home .palazzo-discover__text .palazzo-shell {
+    margin: 0;
+    width: min(560px, 100%);
+}
+
+.palazzo-home .palazzo-discover .palazzo-title-md {
+    margin-top: 1rem;
+}
+
+.palazzo-home .palazzo-copy {
+    margin-top: 1.25rem;
+    max-width: 48ch;
+    font-size: 0.82rem;
+    line-height: 1.72;
+}
+
+.palazzo-home .palazzo-photo-break {
+    height: clamp(420px, 62vw, 700px);
+}
+
+.palazzo-home .palazzo-hours {
+    padding: clamp(4.2rem, 9vw, 7.8rem) 1rem;
+}
+
+.palazzo-home .palazzo-hours__kicker {
+    margin: 0;
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.palazzo-home .palazzo-hours .palazzo-title-md {
+    margin-top: 0.8rem;
+}
+
+.palazzo-home .palazzo-hours__list {
+    margin: 1.5rem auto 0;
+    display: grid;
+    gap: 0.68rem;
+}
+
+.palazzo-home .palazzo-hours__list p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.palazzo-home .palazzo-menu {
+    background: var(--palazzo-red);
+    color: var(--palazzo-cream);
+    padding: clamp(3.9rem, 9vw, 7.2rem) 1rem;
+}
+
+.palazzo-home .palazzo-menu .palazzo-title-md {
+    color: var(--palazzo-cream);
+}
+
+.palazzo-home .palazzo-menu__card {
+    margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.palazzo-home .palazzo-menu__grid {
+    gap: 2.1rem 2.4rem;
+    padding: 1.6rem 1.55rem;
+}
+
+.palazzo-home .palazzo-menu__item p {
+    margin-top: 0.44rem;
+    color: color-mix(in srgb, var(--palazzo-red) 78%, #f7a697);
+    font-size: 0.77rem;
+    line-height: 1.6;
+}
+
+.palazzo-home .palazzo-values {
+    padding: clamp(4rem, 9vw, 7.4rem) 1rem;
+}
+
+.palazzo-home .palazzo-values .palazzo-title-md {
+    margin: 0 auto;
+    max-width: 21ch;
+}
+
+.palazzo-home .palazzo-values__grid {
+    margin-top: clamp(2rem, 5vw, 3rem);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.35rem;
+}
+
+.palazzo-home .palazzo-value {
+    padding: 1.2rem 1.05rem 1.25rem;
+}
+
+.palazzo-home .palazzo-value__icon {
+    height: 2.8rem;
+    width: 2.8rem;
+}
+
+.palazzo-home .palazzo-value h3 {
+    margin-top: 0.88rem;
+    font-size: 1.05rem;
+}
+
+.palazzo-home .palazzo-value p {
+    margin-top: 0.64rem;
+    color: rgb(193 229 214 / 0.86);
+    font-size: 0.73rem;
+    line-height: 1.62;
+}
+
+.palazzo-home .palazzo-carousel {
+    padding: clamp(3rem, 7vw, 5.6rem) 0;
+}
+
+.palazzo-home .palazzo-carousel__track {
+    gap: clamp(0.62rem, 1.5vw, 1.2rem);
+    padding: 0 clamp(1rem, 3.6vw, 2.6rem);
+    scroll-padding-left: clamp(1rem, 3.6vw, 2.6rem);
+}
+
+.palazzo-home .palazzo-carousel__track::-webkit-scrollbar {
+    display: none;
+}
+
+.palazzo-home .palazzo-carousel__item {
+    flex: 0 0 clamp(245px, 26vw, 330px);
+    height: clamp(280px, 31vw, 390px);
+}
+
+.palazzo-home .palazzo-footer {
+    padding: clamp(4.1rem, 8vw, 6rem) 1.15rem clamp(4.2rem, 8vw, 6.2rem);
+}
+
+.palazzo-home .palazzo-footer__grid {
+    gap: clamp(1.4rem, 4vw, 3rem);
+}
+
+.palazzo-home .palazzo-footer__label {
+    font-size: 0.76rem;
+}
+
+.palazzo-home .palazzo-footer__lines {
+    margin-top: 0.52rem;
+}
+
+.palazzo-home .palazzo-footer__lines p,
+.palazzo-home .palazzo-footer__lines a {
+    margin-top: 0.34rem;
+    font-size: 0.76rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 1080px) {
+    .palazzo-home .palazzo-values__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .palazzo-home .palazzo-nav__inner {
+        height: 3rem;
+        padding-inline: 0.9rem;
+    }
+
+    .palazzo-home .palazzo-nav__links {
+        gap: 0.72rem;
+        font-size: 0.61rem;
+        letter-spacing: 0.1em;
+    }
+
+    .palazzo-home .palazzo-phrase {
+        padding: 3.2rem 1rem;
+    }
+
+    .palazzo-home .palazzo-discover__text {
+        padding: 2.4rem 1rem 2.8rem;
+    }
+
+    .palazzo-home .palazzo-menu__grid {
+        grid-template-columns: 1fr;
+        padding: 1.2rem 0.95rem;
+        gap: 1.5rem;
+    }
+
+    .palazzo-home .palazzo-values__grid,
+    .palazzo-home .palazzo-footer__grid {
+        grid-template-columns: 1fr;
+    }
+}
