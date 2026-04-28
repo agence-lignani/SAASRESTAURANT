@@ -25,10 +25,6 @@ class SiteContentDefaults
                     'eyebrow' => 'Depuis 1985',
                     'title' => $restaurant->name,
                     'subtitle' => $subtitle,
-                    'brand_label' => 'PALAZZO!',
-                    'nav_menu_label' => 'Menu',
-                    'nav_about_label' => 'About',
-                    'nav_contact_label' => 'Contact',
                     'image_url' => $mockHeroImage,
                     'image_alt' => 'Ambiance de la salle et service du restaurant '.$restaurant->name,
                     'cta_buttons' => [
@@ -70,7 +66,6 @@ class SiteContentDefaults
                 'menus' => [
                     'variant' => 'bakery_top_products',
                     'heading' => 'Signatures culinaires',
-                    'chip_label' => 'LEEK & CHORIZO',
                     'section_title' => 'Our Pizzas',
                     'intro' => 'Une sélection des assiettes qui racontent notre cuisine : saison, précision et générosité.',
                     'items' => [
@@ -80,20 +75,6 @@ class SiteContentDefaults
                     ],
                     'cta_buttons' => [
                         ['label' => 'Voir la carte complète', 'href' => route('site.carte'), 'variant' => 'primary'],
-                    ],
-                ],
-                'espaces' => [
-                    'variant' => 'bakery_featured_treats',
-                    'eyebrow' => 'Le chef',
-                    'heading' => 'Antoine Dubois',
-                    'body' => '<p>Formé dans les grandes maisons parisiennes, le Chef Antoine Dubois défend une cuisine française précise, lisible et contemporaine.</p><p>Sa philosophie : sublimer les produits de saison sans trahir le goût originel. Chaque assiette raconte une histoire de terroir et de transmission.</p>',
-                    'image_url' => 'https://images.unsplash.com/photo-1759521296047-89338c8e083d?w=1200&q=80&auto=format&fit=crop',
-                    'image_alt' => 'Portrait du chef en cuisine',
-                    'recognition_label' => 'Reconnaissance',
-                    'recognition_value' => 'Bib Gourmand • 15/20 Gault & Millau',
-                    'links' => [
-                        ['label' => 'Réserver une table', 'href' => route('site.reservation')],
-                        ['label' => 'Nous contacter', 'href' => route('site.contact')],
                     ],
                 ],
                 'values' => [
@@ -133,62 +114,7 @@ class SiteContentDefaults
                     ],
                     'gallery_link_label' => 'Parcourir toute la galerie',
                     'gallery_link_href' => route('site.galerie'),
-                ],
-                'reviews_widget' => [
-                    'variant' => 'reviews_card_deck',
-                    'section_eyebrow' => 'Témoignages',
-                    'heading' => 'Ce que disent nos convives',
-                    'highlight_quote' => 'Un voyage de goût, du service à l’assiette — chaque plat raconte une histoire.',
-                    'platform' => 'TripAdvisor',
-                    'platform_label_prefix' => 'Lire les avis sur',
-                    'widget_helper' => 'Widget TripAdvisor — renseignez l’URL de votre fiche et l’identifiant dans l’administration.',
-                    'comments_link_label' => 'Derniers commentaires',
-                    'description' => '<p>Les retours de nos hôtes nous guident à chaque service. Merci d’avoir pris le temps de partager votre expérience.</p>',
-                    'url' => '',
-                    'cta_buttons' => [],
-                    'cards' => [
-                        ['quote' => 'Une soirée parfaitement orchestrée : des assiettes précises, un service discret et une carte des vins qui sublime le menu.', 'author' => 'Éléonore J.'],
-                        ['quote' => 'Le menu saisonnier est une réussite, accords mets-vins remarquables. Nous reviendrons pour le brunch.', 'author' => 'Marcus T.'],
-                        ['quote' => 'Probablement la meilleure table que nous ayons testée cette année dans le quartier.', 'author' => 'Sarah L.'],
-                    ],
-                    'location_id' => '',
-                    'widget_type' => 'cdsratingsonlynarrow',
-                    'widget_type_comments' => 'cdsrr_reviewlist',
-                ],
-                'faq' => [
-                    'variant' => 'faq_accordion_cards',
-                    'heading' => 'FAQ',
-                    'intro' => 'Régimes alimentaires, tenue, groupes : nous avons regroupé les réponses les plus courantes.',
-                    'items' => [
-                        [
-                            'question' => 'Proposez-vous des options végétariennes ou véganes ?',
-                            'answer' => '<p>Oui. Nous proposons un parcours végétarien à chaque service et un menu végan sur demande 48 h à l’avance. Pour les allergies, merci de nous indiquer les détails lors de la réservation.</p>',
-                        ],
-                        [
-                            'question' => 'Les enfants sont-ils les bienvenus ?',
-                            'answer' => '<p>Bien sûr. Nous pouvons adapter les portions et proposer un menu enfant sur demande. Pour les poussettes, indiquez-le à la réservation pour vous attribuer une table adaptée.</p>',
-                        ],
-                        [
-                            'question' => 'Comment signaler une allergie ou une intolérance ?',
-                            'answer' => '<p>Mentionnez-la lors de la réservation (champ « notes ») et rappelez-la à l’équipe en salle. Notre cuisine adapte la composition des plats dans la mesure du possible.</p>',
-                        ],
-                        [
-                            'question' => 'Y a-t-il une tenue recommandée ?',
-                            'answer' => '<p>Tenue élégante décontractée. Pas de short ni de tenue de plage en salle. En soirée, une veste est appréciée pour les messieurs.</p>',
-                        ],
-                    ],
-                    'contact_label' => 'Contacter le restaurant',
-                    'contact_href' => route('site.contact'),
-                ],
-                'spotlight' => [
-                    'variant' => 'bakery_promo_banner',
-                    'heading' => 'Réservez votre table',
-                    'body' => '<p>Laissez-vous séduire par une expérience gastronomique d’exception au cœur du quartier.</p>',
-                    'image_url' => 'https://images.unsplash.com/photo-1775138174727-43996fc57c0f?w=1600&q=80&auto=format&fit=crop',
-                    'image_alt' => 'Pizza cuite au feu de bois, plan serré sur la texture et la garniture.',
-                    'buttons' => [
-                        ['label' => 'Réserver maintenant', 'href' => route('site.reservation')],
-                    ],
+                    'mosaic_title' => 'Ambiances de la maison',
                 ],
                 'practical' => [
                     'variant' => 'bakery_footer_contact',
@@ -196,15 +122,10 @@ class SiteContentDefaults
                     'contact_title' => 'Nous joindre',
                     'opening_title' => 'Horaires d’ouverture',
                     'opening_lines' => [],
-                    'footer_map_label' => 'Site map',
-                    'footer_find_label' => 'Find us',
-                    'footer_hours_label' => 'Hours',
-                    'footer_meta_lines' => [
-                        'A template by figma.to.website designed by Alexis Oulès.',
-                        'Follow us on x.com',
-                        'Say hello: sales@figweb.com',
-                        '2025 - divRIOTS',
-                    ],
+                    'footer_address_title' => 'Adresse',
+                    'footer_contact_title' => 'Contact',
+                    'footer_hours_title' => 'Horaires',
+                    'footer_legal_line' => 'Palazzo Pizzeria — Tous droits réservés.',
                 ],
             ],
             'carte' => [

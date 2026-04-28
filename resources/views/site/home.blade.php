@@ -43,6 +43,10 @@
             : 'Introducing the Leek & Chorizo Pizza — A Neapolitan-style sourdough masterpiece, proofed for 72 hours to craft the perfect crust.';
         $discoverChip = filled($menus['chip_label'] ?? null) ? $menus['chip_label'] : 'LEEK & CHORIZO';
         $menuSectionTitle = filled($menus['section_title'] ?? null) ? $menus['section_title'] : 'Our Pizzas';
+        $galleryTitle = filled($gallery['heading'] ?? null) ? $gallery['heading'] : 'Moments at Palazzo';
+        $galleryIntro = filled($gallery['intro'] ?? null)
+            ? $gallery['intro']
+            : 'Une galerie élégante pour saisir l’ambiance de la maison, entre salle, cuisine et service.';
         $discoverImage = $menus['items'][0]['image_url'] ?? ($manifesto['image_url'] ?? null);
         $discoverImageAlt = filled($menus['items'][0]['image_alt'] ?? null)
             ? $menus['items'][0]['image_alt']
@@ -245,15 +249,21 @@
                 </div>
             </section>
 
-            <section class="palazzo-carousel">
-                <div class="palazzo-carousel__track">
-                    @foreach($carousel as $card)
-                        @if(filled($card['image_url'] ?? null))
-                            <figure class="palazzo-carousel__item">
-                                <img src="{{ $card['image_url'] }}" alt="{{ $card['image_alt'] ?? 'Photo de la galerie du restaurant' }}" loading="lazy" />
-                            </figure>
-                        @endif
-                    @endforeach
+            <section class="palazzo-gallery">
+                <div class="palazzo-shell">
+                    <div class="palazzo-gallery__head palazzo-center">
+                        <h2 class="palazzo-title-md">{{ $galleryTitle }}</h2>
+                        <p class="palazzo-copy">{{ $galleryIntro }}</p>
+                    </div>
+                    <div class="palazzo-gallery__mosaic">
+                        @foreach($carousel as $index => $card)
+                            @if(filled($card['image_url'] ?? null))
+                                <figure class="palazzo-gallery__tile {{ $index % 5 === 0 ? 'is-wide' : '' }} {{ $index % 7 === 0 ? 'is-tall' : '' }}">
+                                    <img src="{{ $card['image_url'] }}" alt="{{ $card['image_alt'] ?? 'Photo de la galerie du restaurant' }}" loading="lazy" />
+                                </figure>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
             </section>
         </main>
@@ -262,42 +272,48 @@
 
 @section('footer')
     <footer id="contact" class="palazzo-footer">
-        <div class="palazzo-shell palazzo-footer__grid">
-            <div>
-                <p class="palazzo-footer__label">{{ $footerMapLabel }}</p>
-                <div class="palazzo-footer__lines">
-                    <p><a href="{{ route('site.carte') }}">{{ $navMenuLabel }}</a></p>
-                    <p><a href="#about-band">{{ $navAboutLabel }}</a></p>
-                    <p><a href="#contact">{{ $navContactLabel }}</a></p>
+        <div class="palazzo-shell">
+            <div class="palazzo-footer__brand palazzo-center">
+                <p class="palazzo-footer__kicker">{{ $footerMapLabel }}</p>
+                <h2 class="palazzo-title-md">{{ $brandLabel }}</h2>
+            </div>
+            <div class="palazzo-footer__grid">
+                <div class="palazzo-footer__card">
+                    <p class="palazzo-footer__label">{{ $footerMapLabel }}</p>
+                    <div class="palazzo-footer__lines">
+                        <p><a href="{{ route('site.carte') }}">{{ $navMenuLabel }}</a></p>
+                        <p><a href="#about-band">{{ $navAboutLabel }}</a></p>
+                        <p><a href="#contact">{{ $navContactLabel }}</a></p>
+                    </div>
+                </div>
+                <div class="palazzo-footer__card">
+                    <p class="palazzo-footer__label">{{ $footerFindLabel }}</p>
+                    <div class="palazzo-footer__lines">
+                        @if(filled($restaurant->address_line1))
+                            <p>{{ $restaurant->address_line1 }}</p>
+                        @endif
+                        @if(filled($restaurant->contact_phone))
+                            <p>{{ $restaurant->contact_phone }}</p>
+                        @endif
+                        @if(filled($restaurant->contact_email))
+                            <p>{{ $restaurant->contact_email }}</p>
+                        @endif
+                    </div>
+                </div>
+                <div class="palazzo-footer__card">
+                    <p class="palazzo-footer__label">{{ $footerHoursLabel }}</p>
+                    <div class="palazzo-footer__lines">
+                        @foreach($openingLines as $line)
+                            <p>{{ $line }}</p>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-            <div>
-                <p class="palazzo-footer__label">{{ $footerFindLabel }}</p>
-                <div class="palazzo-footer__lines">
-                    @if(filled($restaurant->address_line1))
-                        <p>{{ $restaurant->address_line1 }}</p>
-                    @endif
-                    @if(filled($restaurant->contact_phone))
-                        <p>{{ $restaurant->contact_phone }}</p>
-                    @endif
-                    @if(filled($restaurant->contact_email))
-                        <p>{{ $restaurant->contact_email }}</p>
-                    @endif
-                </div>
+            <div class="palazzo-footer__meta palazzo-center">
+                @foreach($footerMetaLines as $metaLine)
+                    <p>{{ $metaLine }}</p>
+                @endforeach
             </div>
-            <div>
-                <p class="palazzo-footer__label">{{ $footerHoursLabel }}</p>
-                <div class="palazzo-footer__lines">
-                    @foreach($openingLines as $line)
-                        <p>{{ $line }}</p>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div class="palazzo-shell palazzo-footer__meta">
-            @foreach($footerMetaLines as $metaLine)
-                <p>{{ $metaLine }}</p>
-            @endforeach
         </div>
     </footer>
 @endsection

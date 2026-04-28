@@ -10,7 +10,7 @@ final class HomeSectionCatalog
     /** @return list<string> */
     public static function keys(): array
     {
-        return ['hero', 'manifesto', 'menus', 'values', 'reviews_widget', 'espaces', 'faq', 'carte_narrative', 'gallery_highlights', 'spotlight', 'practical'];
+        return ['hero', 'manifesto', 'menus', 'values', 'gallery_highlights', 'practical'];
     }
 
     /**
@@ -21,14 +21,9 @@ final class HomeSectionCatalog
         return [
             'hero' => 'Accueil — bandeau principal',
             'manifesto' => 'À propos du restaurant',
-            'carte_narrative' => 'Carte signature',
             'menus' => 'Menus & formules',
             'values' => 'Valeurs / engagements',
             'gallery_highlights' => 'Galerie ambiance',
-            'reviews_widget' => 'Avis clients',
-            'espaces' => 'Le chef',
-            'faq' => 'FAQ pratique',
-            'spotlight' => 'CTA réservation finale',
             'practical' => 'Contact & accès',
         ];
     }
