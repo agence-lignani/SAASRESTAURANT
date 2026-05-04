@@ -5,17 +5,27 @@
 @section('content')
     @include('site.partials.top-contact-bar', ['restaurant' => $restaurant])
 
-    <header class="bistro-main-header sticky top-0 z-50 border-b border-stone-200/80 bg-white/75 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
-        <div class="bistro-container flex flex-wrap items-center justify-between gap-4 py-4">
-            <a href="{{ route('site.home') }}" class="bistro-title text-lg text-stone-900 md:text-xl">
+    <header class="bistro-inner-header">
+        <div class="bistro-inner-header__inner">
+            <a href="{{ route('site.home') }}" class="bistro-inner-brand">
                 {{ $restaurant->name }}
             </a>
             @include('site.partials.main-nav')
         </div>
     </header>
 
-    <main id="contenu-principal" class="pb-16 pt-8 md:pb-24 md:pt-12">
-        <div class="bistro-container max-w-3xl">
+    <section class="bistro-page-hero" aria-hidden="true">
+        <div class="palazzo-shell palazzo-center" style="position:relative;">
+            <p class="bistro-page-hero__eyebrow">{{ $restaurant->name }}</p>
+            <h1 class="bistro-page-hero__title">{{ $pageContent['title'] ?? 'Réserver une table' }}</h1>
+            @if(filled($pageContent['intro'] ?? null))
+                <p class="bistro-page-hero__intro">{!! strip_tags(\App\Support\SiteContent\SiteContentHtml::paragraph($pageContent['intro'])) !!}</p>
+            @endif
+        </div>
+    </section>
+
+    <main id="contenu-principal" class="bistro-page-content">
+        <div class="palazzo-shell" style="max-width:780px;margin:0 auto;">
             @php
                 $minDate = now()->addHours((int) ($bookingSettings?->min_notice_hours ?? 2))->toDateString();
                 $maxDate = now()->addDays((int) ($bookingSettings?->max_days_ahead ?? 30))->toDateString();
@@ -111,15 +121,15 @@
             @foreach($sectionOrder as $sectionKey)
                 @if($sectionKey === 'feedback')
                     @if (session('reservation_ok'))
-                        <div class="prose prose-stone prose-emerald mt-6 max-w-none rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 prose-p:my-0">
+                        <div class="bistro-alert bistro-alert--success mb-6" role="status">
                             {!! \App\Support\SiteContent\SiteContentHtml::safe($pageContent['success_message'] ?? 'Merci ! Votre demande de réservation a bien été enregistrée.') !!}
                         </div>
                     @endif
 
                     @if ($errors->any())
-                        <div class="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                            <p class="font-semibold">{{ $pageContent['error_form_title'] ?? 'Le formulaire contient des erreurs :' }}</p>
-                            <ul class="mt-2 list-disc space-y-1 pl-5">
+                        <div class="bistro-alert bistro-alert--error mb-6" role="alert">
+                            <strong>{{ $pageContent['error_form_title'] ?? 'Le formulaire contient des erreurs :' }}</strong>
+                            <ul style="margin-top:0.5rem;padding-left:1.2rem;">
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                 @endforeach

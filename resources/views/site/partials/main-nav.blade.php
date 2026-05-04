@@ -1,8 +1,22 @@
-<nav class="bistro-main-nav" aria-label="Navigation principale">
-    <div class="bistro-main-nav-links">
-        <a href="{{ route('site.home') }}" class="{{ ($isBakeryTheme ?? false) ? 'text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/85 hover:text-white' : 'bistro-main-nav-link' }}">ACCUEIL</a>
-        <a href="{{ route('site.carte') }}" class="{{ ($isBakeryTheme ?? false) ? 'text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/85 hover:text-white' : 'bistro-main-nav-link' }}">MENU</a>
-        <a href="{{ route('site.home') }}#manifesto-heading" class="{{ ($isBakeryTheme ?? false) ? 'text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/85 hover:text-white' : 'bistro-main-nav-link' }}">A PROPOS</a>
+<nav class="bistro-inner-nav" aria-label="Navigation principale" id="bistro-main-nav">
+    <div class="bistro-inner-nav__links" id="bistro-nav-links">
+        <a href="{{ route('site.home') }}" class="bistro-inner-nav__link">Accueil</a>
+        <a href="{{ route('site.carte') }}" class="bistro-inner-nav__link">Menu</a>
+        <a href="{{ route('site.galerie') }}" class="bistro-inner-nav__link">Galerie</a>
+        <a href="{{ route('site.contact') }}" class="bistro-inner-nav__link">Contact</a>
+        <a href="{{ route('site.reservation') }}" class="bistro-inner-nav__cta">Réserver</a>
     </div>
-    <a href="{{ route('site.reservation') }}" class="{{ ($isBakeryTheme ?? false) ? 'inline-flex h-10 items-center justify-center bg-[#d97a3a] px-5 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white transition hover:brightness-105' : 'bistro-main-nav-cta' }}">RÉSERVER</a>
+    <button
+        class="bistro-inner-nav__toggle"
+        aria-controls="bistro-nav-links"
+        aria-expanded="false"
+        aria-label="Ouvrir le menu de navigation"
+        type="button"
+    >
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true">
+            <rect y="0" width="20" height="2" rx="1" fill="currentColor"/>
+            <rect y="6" width="20" height="2" rx="1" fill="currentColor"/>
+            <rect y="12" width="20" height="2" rx="1" fill="currentColor"/>
+        </svg>
+    </button>
 </nav>

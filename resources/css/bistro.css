@@ -1947,3 +1947,715 @@
         text-align: center;
     }
 }
+
+/* ================================================================
+   INNER PAGES — Palazzo-style redesign
+   (carte, contact, galerie, reservation)
+   ================================================================ */
+
+/* ─── Skip-to-content (accessibility) ─── */
+.bistro-skip-link {
+    position: absolute;
+    top: -4rem;
+    left: 1rem;
+    z-index: 300;
+    display: inline-flex;
+    align-items: center;
+    background: var(--palazzo-green, #105a41);
+    color: var(--palazzo-cream, #f1e8dd);
+    padding: 0.5rem 1.2rem;
+    font-family: 'Martian Mono', ui-monospace, monospace;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 0 0 0.5rem 0.5rem;
+    text-decoration: none;
+    transition: top 120ms ease;
+}
+.bistro-skip-link:focus {
+    top: 0;
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ─── Top contact bar (Palazzo green) ─── */
+.bistro-top-bar {
+    background: var(--palazzo-green, #105a41);
+    color: var(--palazzo-cream, #f1e8dd);
+    font-family: 'Martian Mono', ui-monospace, monospace;
+    padding: 0.42rem 0;
+    font-size: 0.75rem;
+}
+.bistro-top-bar a {
+    color: var(--palazzo-cream, #f1e8dd);
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0.88;
+    transition: opacity 150ms;
+}
+.bistro-top-bar a:hover,
+.bistro-top-bar a:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+}
+
+/* ─── Inner page sticky header ─── */
+.bistro-inner-header {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    border-bottom: 1px solid rgb(238 55 27 / 0.22);
+    background: rgb(241 232 221 / 0.97);
+    backdrop-filter: blur(8px);
+    font-family: 'Martian Mono', ui-monospace, monospace;
+}
+
+.bistro-inner-header__inner {
+    margin: 0 auto;
+    display: flex;
+    height: 3.5rem;
+    width: min(1240px, calc(100% - 2rem));
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+/* Restaurant brand link */
+.bistro-inner-brand {
+    font-family: 'Oi', Georgia, serif;
+    font-size: clamp(1.05rem, 2vw, 1.38rem);
+    color: var(--palazzo-red, #ee371b);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 140ms ease;
+}
+.bistro-inner-brand:hover { opacity: 0.78; }
+.bistro-inner-brand:focus-visible {
+    outline: 3px solid var(--palazzo-red, #ee371b);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Nav links row */
+.bistro-inner-nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.bistro-inner-nav__links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.4vw, 2rem);
+    font-size: clamp(0.72rem, 0.69rem + 0.1vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--palazzo-red, #ee371b);
+}
+
+.bistro-inner-nav__link {
+    color: var(--palazzo-red, #ee371b);
+    text-decoration: none;
+    opacity: 0.86;
+    transition: opacity 150ms;
+}
+.bistro-inner-nav__link:hover,
+.bistro-inner-nav__link:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 0.22rem;
+}
+.bistro-inner-nav__link:focus-visible {
+    outline: 3px solid var(--palazzo-red, #ee371b);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Réserver CTA */
+.bistro-inner-nav__cta {
+    display: inline-flex;
+    height: 2.1rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--palazzo-red, #ee371b);
+    color: var(--palazzo-cream, #f1e8dd);
+    border-radius: 999px;
+    padding: 0 1.1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 140ms ease, box-shadow 140ms ease;
+    box-shadow: 0 2px 8px rgb(238 55 27 / 0.24);
+    margin-left: clamp(0.8rem, 1.6vw, 1.6rem);
+}
+.bistro-inner-nav__cta:hover,
+.bistro-inner-nav__cta:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgb(238 55 27 / 0.34);
+}
+.bistro-inner-nav__cta:focus-visible {
+    outline: 3px solid var(--palazzo-cream, #f1e8dd);
+    outline-offset: 2px;
+}
+
+/* Mobile hamburger */
+.bistro-inner-nav__toggle {
+    display: none;
+    background: none;
+    border: 1.5px solid rgb(238 55 27 / 0.48);
+    border-radius: 0.35rem;
+    cursor: pointer;
+    padding: 0.3rem 0.45rem;
+    color: var(--palazzo-red, #ee371b);
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    transition: background 150ms;
+    margin-left: 0.75rem;
+}
+.bistro-inner-nav__toggle:hover { background: rgb(238 55 27 / 0.08); }
+.bistro-inner-nav__toggle:focus-visible {
+    outline: 3px solid var(--palazzo-red, #ee371b);
+    outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .bistro-inner-nav__links { display: none; }
+    .bistro-inner-nav__toggle { display: flex; }
+    .bistro-inner-nav__cta { display: none; }
+
+    .bistro-inner-nav.is-open .bistro-inner-nav__links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 3.5rem;
+        left: 0;
+        right: 0;
+        z-index: 58;
+        background: var(--palazzo-cream, #f1e8dd);
+        border-bottom: 2px solid var(--palazzo-red, #ee371b);
+        padding: 1.5rem 1.5rem 2rem;
+        gap: 1.4rem;
+        font-size: 0.88rem;
+        box-shadow: 0 8px 32px rgb(0 0 0 / 0.12);
+    }
+
+    .bistro-inner-nav.is-open .bistro-inner-nav__cta {
+        display: inline-flex;
+        width: 100%;
+        height: 2.7rem;
+        font-size: 0.8rem;
+        margin-left: 0;
+        border-radius: 0.6rem;
+    }
+}
+
+/* ─── Page hero banner (red) ─── */
+.bistro-page-hero {
+    background: var(--palazzo-red, #ee371b);
+    color: var(--palazzo-cream, #f1e8dd);
+    font-family: 'Martian Mono', ui-monospace, monospace;
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2.5rem, 5.5vw, 4.5rem);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle hatching texture */
+.bistro-page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.045;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        var(--palazzo-cream, #f1e8dd) 0,
+        var(--palazzo-cream, #f1e8dd) 1px,
+        transparent 0,
+        transparent 50%
+    );
+    background-size: 14px 14px;
+    pointer-events: none;
+}
+
+.bistro-page-hero__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(241, 232, 221, 0.68);
+    margin: 0 0 0.85rem;
+}
+
+.bistro-page-hero__title {
+    font-family: 'Oi', Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.02;
+    margin: 0;
+    text-wrap: balance;
+    position: relative;
+}
+
+.bistro-page-hero__intro {
+    margin: 1.1rem auto 0;
+    max-width: 56ch;
+    font-size: clamp(0.88rem, 0.84rem + 0.15vw, 0.96rem);
+    line-height: 1.75;
+    color: rgba(241, 232, 221, 0.8);
+    text-wrap: balance;
+    position: relative;
+}
+
+/* ─── Inner page main content (cream) ─── */
+.bistro-page-content {
+    background: var(--palazzo-cream, #f1e8dd);
+    color: var(--palazzo-green, #105a41);
+    font-family: 'Martian Mono', ui-monospace, monospace;
+    padding-top: clamp(3rem, 7vw, 5.5rem);
+    padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+/* ─── Menu section & items ─── */
+.bistro-menu-section { }
+.bistro-menu-section + .bistro-menu-section { margin-top: 4.5rem; }
+
+.bistro-menu-section__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--palazzo-red, #ee371b);
+    margin-bottom: 2rem;
+}
+
+.bistro-menu-section__title {
+    font-family: 'Oi', Georgia, serif;
+    font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+    color: var(--palazzo-green, #105a41);
+    line-height: 1.08;
+    margin: 0;
+}
+
+.bistro-menu-section__desc {
+    font-size: 0.88rem;
+    line-height: 1.68;
+    color: color-mix(in srgb, var(--palazzo-green, #105a41) 72%, #ffffff);
+    margin: 0.6rem 0 0;
+}
+
+.bistro-menu-pdf-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--palazzo-red, #ee371b);
+    text-decoration: none;
+    opacity: 0.88;
+    transition: opacity 150ms;
+    white-space: nowrap;
+}
+.bistro-menu-pdf-link:hover { opacity: 1; text-decoration: underline; text-underline-offset: 0.18rem; }
+
+.bistro-menu-item {
+    background: #fff;
+    border: 1px solid rgba(16, 90, 65, 0.13);
+    border-radius: 0.85rem;
+    padding: 1.2rem 1.5rem;
+    transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.bistro-menu-item:hover {
+    box-shadow: 0 6px 22px rgba(16, 90, 65, 0.1);
+    transform: translateY(-1px);
+}
+
+.bistro-menu-item__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.6rem 1rem;
+}
+
+.bistro-menu-item__name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--palazzo-green, #105a41);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.bistro-menu-item__price {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--palazzo-red, #ee371b);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.bistro-menu-item__desc {
+    font-size: 0.875rem;
+    line-height: 1.68;
+    color: color-mix(in srgb, var(--palazzo-green, #105a41) 70%, #ffffff);
+    margin: 0.45rem 0 0;
+}
+
+.bistro-menu-item__allergens {
+    font-size: 0.78rem;
+    color: color-mix(in srgb, var(--palazzo-green, #105a41) 56%, #ffffff);
+    margin-top: 0.55rem;
+}
+.bistro-menu-item__allergens strong {
+    color: color-mix(in srgb, var(--palazzo-green, #105a41) 80%, #ffffff);
+    font-weight: 700;
+}
+
+.bistro-menu-item__flags {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #3a8c6a;
+    margin-top: 0.38rem;
+    letter-spacing: 0.03em;
+}
+
+/* ─── Contact form ─── */
+.bistro-contact-wrap {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 720px) {
+    .bistro-contact-wrap {
+        grid-template-columns: 1fr 1.5fr;
+    }
+}
+
+.bistro-contact-aside {
+    background: rgba(16, 90, 65, 0.07);
+    border: 1px solid rgba(16, 90, 65, 0.14);
+    border-radius: 1rem;
+    padding: 1.8rem 1.6rem;
+}
+
+.bistro-contact-aside__title {
+    font-family: 'Oi', Georgia, serif;
+    font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+    color: var(--palazzo-green, #105a41);
+    margin: 0 0 1.2rem;
+    line-height: 1.1;
+}
+
+.bistro-contact-aside__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: color-mix(in srgb, var(--palazzo-green, #105a41) 80%, #ffffff);
+    margin-top: 0.75rem;
+}
+.bistro-contact-aside__item:first-of-type { margin-top: 0; }
+
+.bistro-form-card {
+    background: #fff;
+    border: 1px solid rgba(16, 90, 65, 0.13);
+    border-radius: 1.25rem;
+    padding: clamp(1.8rem, 4vw, 3rem);
+    box-shadow: 0 8px 32px rgba(16, 90, 65, 0.08);
+}
+
+.bistro-form-field { margin-top: 1.5rem; }
+.bistro-form-field:first-child { margin-top: 0; }
+
+.bistro-form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--palazzo-green, #105a41);
+    margin-bottom: 0.45rem;
+    letter-spacing: 0.01em;
+}
+
+.bistro-form-input,
+.bistro-form-select,
+.bistro-form-textarea {
+    width: 100%;
+    border: 1.5px solid rgba(16, 90, 65, 0.22);
+    border-radius: 0.55rem;
+    padding: 0.72rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'Martian Mono', ui-monospace, monospace;
+    color: var(--palazzo-green, #105a41);
+    background: #fff;
+    transition: border-color 150ms, box-shadow 150ms;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.bistro-form-input:focus,
+.bistro-form-select:focus,
+.bistro-form-textarea:focus {
+    outline: none;
+    border-color: var(--palazzo-red, #ee371b);
+    box-shadow: 0 0 0 3px rgba(238, 55, 27, 0.12);
+}
+
+.bistro-form-input::placeholder,
+.bistro-form-textarea::placeholder {
+    color: rgba(16, 90, 65, 0.36);
+}
+
+.bistro-form-select-wrap {
+    position: relative;
+}
+.bistro-form-select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--palazzo-green, #105a41);
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+.bistro-form-submit {
+    display: inline-flex;
+    height: 2.85rem;
+    min-width: 12rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--palazzo-red, #ee371b);
+    color: var(--palazzo-cream, #f1e8dd);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Martian Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0 2rem;
+    transition: transform 140ms, box-shadow 140ms;
+    box-shadow: 0 4px 14px rgba(238, 55, 27, 0.28);
+    margin-top: 2rem;
+}
+.bistro-form-submit:hover,
+.bistro-form-submit:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(238, 55, 27, 0.38);
+}
+.bistro-form-submit:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Alerts */
+.bistro-alert {
+    border-radius: 0.85rem;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+.bistro-alert--success {
+    border: 1px solid rgba(58, 140, 106, 0.5);
+    background: rgba(58, 140, 106, 0.1);
+    color: #1b5e3e;
+}
+.bistro-alert--error {
+    border: 1px solid rgba(238, 55, 27, 0.38);
+    background: rgba(238, 55, 27, 0.07);
+    color: #7a1c0e;
+}
+.bistro-alert--error strong { font-weight: 700; color: #8b1f0e; }
+
+/* ─── Gallery page ─── */
+.bistro-gallery-cell {
+    overflow: hidden;
+    border-radius: 0.85rem;
+    background: rgba(16, 90, 65, 0.06);
+}
+.bistro-gallery-cell img {
+    transition: transform 320ms ease;
+}
+.bistro-gallery-cell:hover img,
+.bistro-gallery-cell:focus-within img {
+    transform: scale(1.04);
+}
+
+/* Lightbox */
+.bistro-gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 4, 2, 0.96);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--palazzo-cream, #f1e8dd);
+}
+.bistro-gallery-lightbox:not([open]) { display: none; }
+
+.bistro-gallery-lightbox__shell {
+    position: relative;
+    width: min(1100px, calc(100% - 5rem));
+    padding: 0;
+}
+@media (max-width: 640px) {
+    .bistro-gallery-lightbox__shell { width: calc(100% - 2rem); }
+}
+
+.bistro-gallery-lightbox__close {
+    position: absolute;
+    top: -3.4rem;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--palazzo-cream, #f1e8dd);
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0.3rem 0.7rem;
+    opacity: 0.82;
+    transition: opacity 150ms, background 150ms;
+}
+.bistro-gallery-lightbox__close:hover,
+.bistro-gallery-lightbox__close:focus-visible { opacity: 1; background: rgba(255,255,255,0.18); }
+
+.bistro-gallery-lightbox__prev,
+.bistro-gallery-lightbox__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(16, 90, 65, 0.82);
+    border: none;
+    cursor: pointer;
+    color: var(--palazzo-cream, #f1e8dd);
+    padding: 0.7rem 0.85rem;
+    border-radius: 999px;
+    font-size: 1.4rem;
+    line-height: 1;
+    transition: background 150ms;
+}
+.bistro-gallery-lightbox__prev { left: -3.6rem; }
+.bistro-gallery-lightbox__next { right: -3.6rem; }
+.bistro-gallery-lightbox__prev:hover,
+.bistro-gallery-lightbox__next:hover { background: rgba(16, 90, 65, 1); }
+@media (max-width: 640px) {
+    .bistro-gallery-lightbox__prev { left: -0.6rem; }
+    .bistro-gallery-lightbox__next { right: -0.6rem; }
+}
+
+.bistro-gallery-lightbox__stage { width: 100%; }
+.bistro-gallery-lightbox__img {
+    display: block;
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
+.bistro-gallery-lightbox__caption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: rgba(241, 232, 221, 0.68);
+}
+.bistro-gallery-lightbox__caption.hidden { display: none; }
+
+/* ─── Footer (Palazzo dark green) ─── */
+.bistro-footer {
+    background: #0e3a2d !important;
+    color: rgba(241, 232, 221, 0.86) !important;
+    border-top: none !important;
+    padding: clamp(3.2rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem) !important;
+    font-family: 'Martian Mono', ui-monospace, monospace;
+}
+
+.bistro-footer-brand {
+    font-family: 'Oi', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--palazzo-cream, #f1e8dd);
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 400;
+}
+
+.bistro-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.15rem 0.6rem;
+    margin-top: 0.65rem;
+    font-size: 0.8rem;
+}
+.bistro-footer-links a {
+    color: rgba(241, 232, 221, 0.74) !important;
+    text-decoration: none;
+    transition: color 150ms;
+}
+.bistro-footer-links a:hover,
+.bistro-footer-links a:focus-visible {
+    color: var(--palazzo-cream, #f1e8dd) !important;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+}
+.bistro-footer-links .separator {
+    color: rgba(241, 232, 221, 0.28);
+}
+
+.bistro-footer-meta {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: rgba(241, 232, 221, 0.46);
+}
+.bistro-footer-meta a {
+    color: var(--palazzo-red-soft, #f9705b) !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+.bistro-footer-meta a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18rem;
+}
+
+/* Reservation picker — Palazzo palette */
+.reservation-picker {
+    background: var(--palazzo-green, #105a41) !important;
+    border-radius: 1.25rem !important;
+    padding: 1.2rem !important;
+    color: var(--palazzo-cream, #f1e8dd);
+}
+.reservation-picker-input {
+    border-color: rgba(241, 232, 221, 0.38) !important;
+    background: rgba(241, 232, 221, 0.1) !important;
+    color: var(--palazzo-cream, #f1e8dd) !important;
+    font-family: 'Martian Mono', ui-monospace, monospace !important;
+}
+.reservation-picker-date-wrap {
+    border-color: rgba(241, 232, 221, 0.28) !important;
+    background: rgba(241, 232, 221, 0.07) !important;
+}
+
+/* Palazzo home copy text: override low-contrast green-soft for accessibility */
+.palazzo-home .palazzo-copy,
+.palazzo-home .palazzo-discover-text {
+    color: color-mix(in srgb, var(--palazzo-green, #105a41) 88%, #000) !important;
+}

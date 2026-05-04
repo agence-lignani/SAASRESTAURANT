@@ -5,32 +5,34 @@
 @section('content')
     @include('site.partials.top-contact-bar', ['restaurant' => $restaurant])
 
-    <header class="bistro-main-header sticky top-0 z-50 border-b border-stone-200/80 bg-white/75 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
-        <div class="bistro-container flex flex-wrap items-center justify-between gap-4 py-4">
-            <a href="{{ route('site.home') }}" class="bistro-title text-lg text-stone-900 md:text-xl">
+    <header class="bistro-inner-header">
+        <div class="bistro-inner-header__inner">
+            <a href="{{ route('site.home') }}" class="bistro-inner-brand">
                 {{ $restaurant->name }}
             </a>
             @include('site.partials.main-nav')
         </div>
     </header>
 
-    <main id="contenu-principal" class="pb-16 pt-8 md:pb-24 md:pt-12">
-        <div class="bistro-container">
+    <section class="bistro-page-hero" aria-hidden="true">
+        <div class="palazzo-shell palazzo-center" style="position:relative;">
+            <p class="bistro-page-hero__eyebrow">{{ $restaurant->name }}</p>
+            <h1 class="bistro-page-hero__title">{{ $pageContent['title'] ?? 'Notre carte' }}</h1>
+            @if(filled($pageContent['intro'] ?? null))
+                <p class="bistro-page-hero__intro">
+                    {!! strip_tags(\App\Support\SiteContent\SiteContentHtml::paragraph($pageContent['intro'])) !!}
+                </p>
+            @endif
+        </div>
+    </section>
+
+    <main id="contenu-principal" class="bistro-page-content" aria-labelledby="carte-main-heading">
+        <h1 id="carte-main-heading" class="sr-only">{{ $pageContent['title'] ?? 'Notre carte' }}</h1>
+        <div class="palazzo-shell">
             @php($sectionOrder = $pageContent['section_order'] ?? \App\Support\SiteContent\PageSectionCatalog::defaultOrder('carte'))
             @foreach($sectionOrder as $sectionKey)
-                @if($sectionKey === 'header')
-                    <section>
-                        <h1 class="bistro-title text-3xl text-stone-900 md:text-4xl">{{ $pageContent['title'] ?? 'Notre carte' }}</h1>
-                        <div class="prose prose-stone mt-3 max-w-2xl text-sm leading-relaxed text-stone-600 prose-p:my-1">
-                            {!! \App\Support\SiteContent\SiteContentHtml::paragraph($pageContent['intro'] ?? 'Prix et disponibilités donnés à titre indicatif ; merci de vous adresser à la salle pour toute allergie ou variante du jour.') !!}
-                        </div>
-                    </section>
-                @endif
-
                 @if($sectionKey === 'menu_list')
-                    <section class="mt-10">
-                        @include('site.partials.carte-menu-list', ['categories' => $categories, 'pageContent' => $pageContent])
-                    </section>
+                    @include('site.partials.carte-menu-list', ['categories' => $categories, 'pageContent' => $pageContent])
                 @endif
             @endforeach
         </div>
