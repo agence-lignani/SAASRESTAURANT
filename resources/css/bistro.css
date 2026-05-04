@@ -414,6 +414,27 @@
     border-bottom: 1px solid #e7dbcf;
 }
 
+.theme-lumen-section {
+    position: relative;
+    border-bottom: 1px solid rgb(229 215 200 / 0.72);
+}
+
+.theme-lumen-section:last-child {
+    border-bottom: 0;
+}
+
+.theme-lumen-section-panel {
+    border: 1px solid rgb(229 215 200 / 0.82);
+    border-radius: clamp(1.4rem, 3vw, 2rem);
+    background: rgb(255 252 248 / 0.72);
+    padding: clamp(1.35rem, 3vw, 2.25rem);
+    box-shadow: 0 22px 54px rgb(67 45 28 / 0.07);
+}
+
+.theme-lumen-section-heading {
+    max-width: 54rem;
+}
+
 .theme-lumen-hero-media {
     overflow: hidden;
     border: 1px solid #e6d7c7;
@@ -500,6 +521,21 @@
     box-shadow: 0 16px 40px rgb(67 45 28 / 0.09);
 }
 
+.theme-lumen-menu-list {
+    border: 1px solid rgb(221 206 192 / 0.82);
+    border-radius: 1.35rem;
+    background: rgb(255 252 248 / 0.62);
+    overflow: hidden;
+}
+
+.theme-lumen-menu-row {
+    padding: clamp(1rem, 2vw, 1.45rem);
+}
+
+.theme-lumen-menu-row + .theme-lumen-menu-row {
+    border-top: 1px solid rgb(221 206 192 / 0.72);
+}
+
 .theme-lumen-card-media {
     overflow: hidden;
     border: 1px solid #ebded0;
@@ -514,6 +550,53 @@
     border-radius: 0.7rem;
     aspect-ratio: 1/1;
     background: #fff;
+}
+
+.theme-lumen-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(0.9rem, 2vw, 1.25rem);
+}
+
+@media (min-width: 768px) {
+    .theme-lumen-gallery-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        align-items: stretch;
+    }
+}
+
+.theme-lumen-gallery-tile {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+}
+
+.theme-lumen-gallery-tile:first-child {
+    aspect-ratio: 16 / 10;
+}
+
+@media (min-width: 768px) {
+    .theme-lumen-gallery-tile {
+        grid-column: span 4 / span 4;
+        aspect-ratio: 4 / 3;
+    }
+
+    .theme-lumen-gallery-tile:first-child {
+        grid-column: span 7 / span 7;
+        grid-row: span 2 / span 2;
+        aspect-ratio: auto;
+        min-height: clamp(26rem, 48vw, 34rem);
+    }
+
+    .theme-lumen-gallery-tile:nth-child(2) {
+        grid-column: span 5 / span 5;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (min-width: 1024px) {
+    .theme-lumen-gallery-tile:not(:first-child) {
+        max-height: 18rem;
+    }
 }
 
 .theme-lumen-promo {

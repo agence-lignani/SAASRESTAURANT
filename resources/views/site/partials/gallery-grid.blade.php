@@ -8,7 +8,7 @@
         $m = $galleryMedia->first();
     @endphp
     <ul class="mt-10 list-none p-0">
-        <li class="bistro-card mx-auto max-w-4xl overflow-hidden">
+        <li class="theme-lumen-card mx-auto max-w-4xl overflow-hidden p-0">
             <figure class="m-0">
                 @include('site.partials.gallery-zoom-thumb', [
                     'm' => $m,
@@ -26,9 +26,9 @@
         </li>
     </ul>
 @elseif($count === 2)
-    <ul class="mt-10 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 sm:gap-8">
+    <ul class="mt-10 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:gap-7">
         @foreach($galleryMedia as $m)
-            <li class="bistro-card overflow-hidden">
+            <li class="theme-lumen-card overflow-hidden p-0">
                 <figure class="m-0">
                     @include('site.partials.gallery-zoom-thumb', [
                         'm' => $m,
@@ -58,7 +58,7 @@
         @foreach($galleryMedia as $m)
             <li
                 @class([
-                    'bistro-card min-h-0 overflow-hidden col-span-2 sm:col-span-1 sm:row-span-2 xl:col-span-1 xl:row-span-1',
+                    'theme-lumen-card min-h-0 overflow-hidden p-0 col-span-2 sm:col-span-1 sm:row-span-2 xl:col-span-1 xl:row-span-1',
                     'col-span-1' => ! $loop->first,
                 ])
             >
@@ -83,9 +83,9 @@
         @endforeach
     </ul>
 @elseif($count === 4)
-    <ul class="mt-10 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 sm:gap-6">
+    <ul class="mt-10 grid list-none grid-cols-1 gap-5 p-0 sm:grid-cols-2 lg:gap-7">
         @foreach($galleryMedia as $m)
-            <li class="bistro-card overflow-hidden">
+            <li class="theme-lumen-card overflow-hidden p-0">
                 <figure class="m-0">
                     @include('site.partials.gallery-zoom-thumb', [
                         'm' => $m,
@@ -115,7 +115,7 @@
                     default => 'aspect-[5/4]',
                 };
             @endphp
-            <li class="bistro-card mb-5 overflow-hidden last:mb-0 sm:mb-6">
+            <li class="theme-lumen-card mb-5 overflow-hidden p-0 last:mb-0 sm:mb-6">
                 <figure class="m-0">
                     @include('site.partials.gallery-zoom-thumb', [
                         'm' => $m,

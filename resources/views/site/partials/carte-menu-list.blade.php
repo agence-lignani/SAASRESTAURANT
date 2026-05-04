@@ -1,7 +1,7 @@
 @if($categories->isEmpty())
     <p class="text-stone-500">{{ $pageContent['empty_state'] ?? 'La carte sera bientôt en ligne.' }}</p>
 @else
-    <div class="space-y-14">
+    <div class="space-y-8 md:space-y-10">
         @foreach($categories as $category)
             <section class="lumen-card scroll-mt-28 p-6 md:p-8" id="cat-{{ $category->id }}" aria-labelledby="heading-cat-{{ $category->id }}">
                 <div class="flex flex-wrap items-end justify-between gap-4 border-b border-[#eadfd4] pb-4">
@@ -21,7 +21,7 @@
                 @if($category->menuItems->isEmpty())
                     <p class="mt-6 text-sm text-stone-500">{{ $pageContent['empty_category_items'] ?? 'Aucun plat dans cette catégorie pour le moment.' }}</p>
                 @else
-                    <ul class="mt-8 divide-y divide-[#eadfd4]">
+                    <ul class="mt-7 divide-y divide-[#eadfd4]">
                         @foreach($category->menuItems as $item)
                             <li class="py-5 first:pt-0 last:pb-0">
                                 <div class="flex flex-wrap items-baseline justify-between gap-2">
