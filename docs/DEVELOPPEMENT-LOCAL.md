@@ -61,6 +61,8 @@ composer run preview
 
 Cette commande compile les assets, supprime `public/hot`, puis lance Laravel seul sur `0.0.0.0:8000`.
 
+La page d’accueil utilise le thème `lumen-atelier` par défaut. Pour comparer l’ancien rendu, ajoutez `?theme=bakery-noir` à l’URL.
+
 ## E-mail
 
 En local, utiliser `MAIL_MAILER=log` (ou Mailpit / Mailhog) au lieu de SMTP Google. La prod utilisera **SMTP Google** (CDC §6.1).

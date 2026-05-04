@@ -4,8 +4,8 @@
 
 @section('content')
     @php
-        $theme = request()->query('theme', env('SITE_THEME_PRESET', 'bakery-noir'));
-        $theme = in_array($theme, ['bakery-noir', 'lumen-atelier'], true) ? $theme : 'bakery-noir';
+        $theme = request()->query('theme', env('SITE_THEME_PRESET', 'lumen-atelier'));
+        $theme = in_array($theme, ['bakery-noir', 'lumen-atelier'], true) ? $theme : 'lumen-atelier';
     @endphp
 
     <main id="contenu-principal">
