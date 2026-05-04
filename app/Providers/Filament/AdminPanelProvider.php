@@ -26,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        return $panel
+        $panel = $panel
             ->default()
             ->id('admin')
             ->path('admin')
@@ -46,7 +46,11 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
             ])
             ->databaseNotifications()
-            ->databaseNotificationsPolling('30s')
+            ->databaseNotificationsPolling('60s')
+            ->renderHook(
+                PanelsRenderHook::BODY_START,
+                fn (): string => view('filament.components.backoffice-loading-bar')->render(),
+            )
             ->renderHook(
                 PanelsRenderHook::BODY_END,
                 fn (): string => view('filament.components.pending-reservation-alerts')->render(),
@@ -66,5 +70,9 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
                 BindFilamentRestaurant::class,
             ]);
+
+        return method_exists($panel, 'spa')
+            ? $panel->spa()
+            : $panel;
     }
 }

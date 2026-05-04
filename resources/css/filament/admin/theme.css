@@ -5,6 +5,79 @@
 @source '../../../../app/Filament/**/*.php';
 @source '../../../../resources/views/filament/**/*.blade.php';
 
+/* Global backoffice navigation loader inspired by Pronote's thin progress bar. */
+.pronote-loading-bar {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 99999;
+    height: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.pronote-loading-bar-visible .pronote-loading-bar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pronote-loading-bar__track {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background: #d5e5d3;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 70%), 0 1px 4px rgb(30 90 24 / 20%);
+}
+
+.pronote-loading-bar__fill {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: -35%;
+    width: 35%;
+    border-radius: 0 999px 999px 0;
+    background: linear-gradient(90deg, #7fb53d 0%, #bddf5c 45%, #5a9f2d 100%);
+    box-shadow: 0 0 8px rgb(102 157 43 / 65%);
+    animation: pronote-loading-bar-slide 1s cubic-bezier(0.42, 0, 0.25, 1) infinite;
+}
+
+.pronote-loading-bar__gloss {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: -60%;
+    width: 60%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 75%), transparent);
+    animation: pronote-loading-bar-gloss 1s ease-in-out infinite;
+}
+
+@keyframes pronote-loading-bar-slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(390%);
+    }
+}
+
+@keyframes pronote-loading-bar-gloss {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(280%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pronote-loading-bar__fill,
+    .pronote-loading-bar__gloss {
+        animation-duration: 2.5s;
+    }
+}
+
 /* Force full-width editing area for Site Contents resource. */
 .fi-resource-site-contents.fi-resource-edit-record-page .fi-page-content,
 .fi-resource-site-contents.fi-resource-create-record-page .fi-page-content {

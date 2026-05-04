@@ -37,16 +37,20 @@ class ServerTodayReservationsWidget extends StatsOverviewWidget
         $start = CarbonImmutable::now($tz)->startOfDay();
         $end = CarbonImmutable::now($tz)->endOfDay();
 
-        $base = Reservation::query()
+        $stats = Reservation::query()
             ->where('restaurant_id', $restaurantId)
-            ->whereBetween('reservation_at', [$start, $end]);
+            ->whereBetween('reservation_at', [$start, $end])
+            ->selectRaw('count(*) as total')
+            ->selectRaw('sum(case when status = ? then 1 else 0 end) as pending', [Reservation::STATUS_PENDING])
+            ->selectRaw('sum(case when status in (?, ?) then 1 else 0 end) as active', [
+                Reservation::STATUS_CONFIRMED,
+                Reservation::STATUS_DELAYED,
+            ])
+            ->first();
 
-        $total = (clone $base)->count();
-        $pending = (clone $base)->where('status', Reservation::STATUS_PENDING)->count();
-        $active = (clone $base)->whereIn('status', [
-            Reservation::STATUS_CONFIRMED,
-            Reservation::STATUS_DELAYED,
-        ])->count();
+        $total = (int) ($stats?->total ?? 0);
+        $pending = (int) ($stats?->pending ?? 0);
+        $active = (int) ($stats?->active ?? 0);
 
         $listUrl = ReservationResource::getUrl('index');
 
