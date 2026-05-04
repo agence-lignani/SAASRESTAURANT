@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/css/bistro.css',
                 'resources/css/filament/admin/theme.css',
                 'resources/js/app.js',
+                'resources/js/filament/admin-navigation-progress.js',
                 'resources/js/filament/site-traffic-charts.js',
             ],
             refresh: true,

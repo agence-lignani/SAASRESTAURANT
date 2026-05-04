@@ -31,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
+            ->spa(condition: true, hasPrefetching: true)
             ->login(Login::class)
             ->maxContentWidth(Width::Full)
             ->colors([
@@ -46,7 +47,11 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
             ])
             ->databaseNotifications()
-            ->databaseNotificationsPolling('30s')
+            ->databaseNotificationsPolling('120s')
+            ->renderHook(
+                PanelsRenderHook::BODY_START,
+                fn (): string => view('filament.components.pronote-navigation-progress')->render(),
+            )
             ->renderHook(
                 PanelsRenderHook::BODY_END,
                 fn (): string => view('filament.components.pending-reservation-alerts')->render(),

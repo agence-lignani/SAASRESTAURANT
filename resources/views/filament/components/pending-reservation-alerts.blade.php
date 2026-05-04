@@ -112,12 +112,9 @@
             lastCount = count;
         };
 
-        const observer = new MutationObserver(() => refresh());
-        observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-
         window.addEventListener('load', () => {
             refresh();
-            setInterval(refresh, 3000);
+            setInterval(refresh, 5000);
         });
     })();
 </script>
