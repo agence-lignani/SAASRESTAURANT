@@ -429,8 +429,116 @@
 
 .theme-lumen-hero {
     background:
-        linear-gradient(135deg, #fbf5ed 0%, #f0e2d2 100%);
+        radial-gradient(circle at 76% 18%, rgb(128 52 31 / 0.14), transparent 21rem),
+        linear-gradient(135deg, #fffaf4 0%, #f4e4d2 58%, #ead4bf 100%);
     border-bottom: 1px solid #e7dbcf;
+}
+
+.theme-lumen-hero-layout {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .theme-lumen-hero-layout {
+        grid-template-columns: minmax(0, 1.04fr) minmax(22rem, 0.86fr);
+    }
+}
+
+.theme-lumen-hero-copy {
+    max-width: 47rem;
+}
+
+.theme-lumen-hero-title {
+    font-family: var(--bistro-font-heading), Georgia, serif;
+    color: #1f1712;
+    font-size: clamp(3.25rem, 8.6vw, 7.4rem);
+    font-weight: 650;
+    letter-spacing: -0.065em;
+    line-height: 0.88;
+    text-wrap: balance;
+}
+
+.theme-lumen-hero-lead {
+    max-width: 38rem;
+    color: #40362f;
+    font-size: clamp(1.08rem, 1rem + 0.45vw, 1.35rem);
+    line-height: 1.75;
+}
+
+.theme-lumen-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.theme-lumen-hero-meta {
+    display: grid;
+    max-width: 32rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding-top: clamp(1.4rem, 3vw, 2rem);
+}
+
+.theme-lumen-stat-card {
+    border-top: 1px solid rgb(80 54 39 / 0.28);
+    padding-top: 0.8rem;
+}
+
+.theme-lumen-stat-value {
+    display: block;
+    font-family: var(--bistro-font-heading), Georgia, serif;
+    color: #221c17;
+    font-size: clamp(1.45rem, 2.8vw, 2rem);
+    line-height: 1;
+}
+
+.theme-lumen-stat-label {
+    margin-top: 0.3rem;
+    color: #5b5048;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.theme-lumen-hero-visual {
+    display: grid;
+    gap: 1rem;
+}
+
+.theme-lumen-hero-media {
+    position: relative;
+    min-height: clamp(26rem, 54vw, 40rem);
+    overflow: hidden;
+    border: 1px solid #d9c5b2;
+    border-radius: clamp(1.4rem, 3vw, 2.25rem);
+    background: #e9d7c6;
+    box-shadow: 0 28px 70px rgb(72 42 24 / 0.18);
+}
+
+.theme-lumen-hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 52%, rgb(31 23 18 / 0.52));
+}
+
+.theme-lumen-hero-media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.theme-lumen-hero-note {
+    margin-left: auto;
+    max-width: 20rem;
+    border: 1px solid rgb(221 206 192 / 0.88);
+    border-radius: 1.35rem;
+    background: rgb(255 252 248 / 0.88);
+    padding: 1.05rem 1.15rem;
+    box-shadow: 0 16px 40px rgb(72 42 24 / 0.1);
 }
 
 .theme-lumen-section {
@@ -454,14 +562,7 @@
     max-width: 54rem;
 }
 
-.theme-lumen-hero-media {
-    overflow: hidden;
-    border: 1px solid #e6d7c7;
-    border-radius: 1rem;
-    box-shadow: 0 16px 35px rgb(56 42 31 / 0.12);
-}
-
-.theme-lumen-hero-media img,
+.theme-lumen-card-media img,
 .theme-lumen-card-media img,
 .theme-lumen-tile img {
     height: 100%;
