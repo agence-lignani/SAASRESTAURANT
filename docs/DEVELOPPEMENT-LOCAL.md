@@ -33,9 +33,29 @@ php artisan serve
 
 Compte seed : **[admin@example.test](mailto:admin@example.test)** / **password**
 
+## Lancer le projet en développement
+
+Après le premier démarrage, utilisez deux terminaux :
+
+```bash
+php artisan serve
+```
+
+```bash
+npm run dev
+```
+
+Pour lancer serveur Laravel, queue, logs et Vite ensemble, vous pouvez aussi utiliser :
+
+```bash
+composer run dev
+```
+
+Dans un environnement distant type Cursor Cloud, `composer run dev` expose Laravel sur `0.0.0.0:8000` et Vite sur `0.0.0.0:5173` pour permettre l’ouverture via le proxy de ports de l’éditeur.
+
 ## E-mail
 
-En local, utiliser `MAIL_MAIL=log` (ou Mailpit / Mailhog) au lieu de SMTP Google. La prod utilisera **SMTP Google** (CDC §6.1).
+En local, utiliser `MAIL_MAILER=log` (ou Mailpit / Mailhog) au lieu de SMTP Google. La prod utilisera **SMTP Google** (CDC §6.1).
 
 ## Multi-tenant
 
@@ -50,3 +70,25 @@ composer install --ignore-platform-req=ext-intl
 ```
 
 Installez intl dès que possible pour exécuter Filament correctement.
+
+## Pousser sur GitHub
+
+Le dépôt est connecté au remote `origin`. Vérifiez-le avec :
+
+```bash
+git remote -v
+```
+
+Workflow recommandé :
+
+```bash
+git checkout -b feature/ma-fonctionnalite
+git status
+git add .
+git commit -m "Décrire le changement"
+git push -u origin feature/ma-fonctionnalite
+```
+
+Ouvrez ensuite une pull request GitHub vers `main`.
+
+Ne versionnez pas `.env`, `vendor/`, `node_modules/` ou `public/build/` : ils sont exclus par le `.gitignore` et se reconstruisent avec `composer install`, `npm install` et `npm run build`.

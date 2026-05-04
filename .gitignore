@@ -1,0 +1,44 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Environment and secrets
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Laravel generated files
+/bootstrap/cache/*.php
+/storage/*.key
+/storage/app/private/*
+/storage/app/public/*
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/pail/
+
+# Keep Laravel placeholder directories
+!/storage/app/private/.gitignore
+!/storage/app/public/.gitignore
+!/storage/framework/cache/data/.gitignore
+!/storage/framework/sessions/.gitignore
+!/storage/framework/testing/.gitignore
+!/storage/framework/views/.gitignore
+!/storage/logs/.gitignore
+
+# Build output
+/public/build/
+/public/hot
+
+# Local databases
+/database/*.sqlite
+/database/*.sqlite-journal
