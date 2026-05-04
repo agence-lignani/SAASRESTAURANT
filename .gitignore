@@ -24,6 +24,7 @@ Thumbs.db
 /storage/framework/testing/*
 /storage/framework/views/*
 /storage/logs/*
+/storage/pail/
 
 # Keep Laravel placeholder directories
 !/storage/app/private/.gitignore
