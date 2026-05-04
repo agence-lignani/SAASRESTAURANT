@@ -17,6 +17,8 @@ Voir **[docs/DEVELOPPEMENT-LOCAL.md](docs/DEVELOPPEMENT-LOCAL.md)**.
 Résumé :
 
 ```bash
+git clone https://github.com/agence-lignani/SAASRESTAURANT.git
+cd SAASRESTAURANT
 composer install
 cp .env.example .env && php artisan key:generate
 php artisan migrate --seed
@@ -32,3 +34,7 @@ php artisan serve
 ```bash
 php artisan test
 ```
+
+## GitHub
+
+Le dépôt ignore les fichiers locaux (`.env`, `vendor/`, `node_modules/`, builds). Voir la section Git de la documentation locale pour créer une branche, committer et pousser.
