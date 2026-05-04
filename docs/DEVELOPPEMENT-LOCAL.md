@@ -53,6 +53,14 @@ composer run dev
 
 Dans un environnement distant type Cursor Cloud, `composer run dev` expose Laravel sur `0.0.0.0:8000` et Vite sur `0.0.0.0:5173` pour permettre l’ouverture via le proxy de ports de l’éditeur.
 
+Si le design ne se charge pas via le proxy de ports, utilisez le mode aperçu compilé :
+
+```bash
+composer run preview
+```
+
+Cette commande compile les assets, supprime `public/hot`, puis lance Laravel seul sur `0.0.0.0:8000`.
+
 ## E-mail
 
 En local, utiliser `MAIL_MAILER=log` (ou Mailpit / Mailhog) au lieu de SMTP Google. La prod utilisera **SMTP Google** (CDC §6.1).
