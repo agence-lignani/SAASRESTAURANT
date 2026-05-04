@@ -14,12 +14,8 @@ final class PageSectionCatalog
                 'hero' => 'Accueil — bandeau principal',
                 'manifesto' => 'À propos du restaurant',
                 'menus' => 'Menus & formules',
-                'reviews_widget' => 'Avis clients',
-                'espaces' => 'Le chef',
-                'faq' => 'FAQ pratique',
-                'carte_narrative' => 'Carte signature',
+                'values' => 'Bloc valeurs / engagements',
                 'gallery_highlights' => 'Galerie ambiance',
-                'spotlight' => 'CTA réservation finale',
                 'practical' => 'Contact & accès',
             ],
             'carte' => [

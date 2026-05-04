@@ -7,7 +7,6 @@ use App\Models\Restaurant;
 use App\Support\SiteContent\HomeSectionCatalog;
 use App\Support\SiteContent\SiteContentDefaults;
 use App\Support\SiteContent\SiteContentResolver;
-use App\Theme\BistroFonts;
 use App\Theme\BistroManifest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +20,7 @@ class HomeController extends Controller
         /** @var Restaurant $restaurant */
         $restaurant = $request->attributes->get('restaurant');
 
-        $restaurant->load(['themeSetting', 'openingHours', 'pageContent']);
+        $restaurant->load(['openingHours', 'pageContent']);
 
         $manifest = BistroManifest::all();
         $cssVars = BistroManifest::cssVariablesForRestaurant($restaurant);
@@ -73,10 +72,33 @@ class HomeController extends Controller
                 return $item;
             }, $content['gallery_highlights']['items']);
         }
+
+        if (isset($content['practical']['opening_lines']) && is_array($content['practical']['opening_lines'])) {
+            $content['practical']['opening_lines'] = array_values(array_filter(array_map(
+                fn (mixed $line): ?string => is_array($line)
+                    ? (filled($line['line'] ?? null) ? (string) $line['line'] : null)
+                    : (filled($line) ? (string) $line : null),
+                $content['practical']['opening_lines']
+            )));
+        }
+
+        if (isset($content['practical']['footer_meta_lines']) && is_array($content['practical']['footer_meta_lines'])) {
+            $content['practical']['footer_meta_lines'] = array_values(array_filter(array_map(
+                fn (mixed $line): ?string => is_array($line)
+                    ? (filled($line['line'] ?? null) ? (string) $line['line'] : null)
+                    : (filled($line) ? (string) $line : null),
+                $content['practical']['footer_meta_lines']
+            )));
+        }
+
         $content['practical'] = [
             'heading' => $content['practical']['heading'] ?? 'Venir au restaurant',
             'contact_title' => $content['practical']['contact_title'] ?? 'Nous joindre',
             'opening_title' => $content['practical']['opening_title'] ?? 'Horaires d’ouverture',
+            'footer_map_label' => $content['practical']['footer_map_label'] ?? 'Site map',
+            'footer_find_label' => $content['practical']['footer_find_label'] ?? 'Find us',
+            'footer_hours_label' => $content['practical']['footer_hours_label'] ?? 'Hours',
+            'footer_meta_lines' => $content['practical']['footer_meta_lines'] ?? [],
             'contact_lines' => array_values(array_filter([
                 $restaurant->contact_phone,
                 $restaurant->contact_email,
@@ -89,19 +111,14 @@ class HomeController extends Controller
                     ])))
                     : null,
             ])),
-            'opening_lines' => $this->formatOpeningHours($restaurant),
+            'opening_lines' => $content['practical']['opening_lines'] ?? $this->formatOpeningHours($restaurant),
         ];
-
-        $theme = $restaurant->themeSetting;
 
         return view('site.home', [
             'manifest' => $manifest,
             'cssVars' => $cssVars,
             'content' => $content,
-            'bistroFontStylesheet' => BistroFonts::stylesheetHref(
-                $theme?->font_heading_key,
-                $theme?->font_body_key,
-            ),
+            'bistroFontStylesheet' => null,
         ]);
     }
 

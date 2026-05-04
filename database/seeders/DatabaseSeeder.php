@@ -10,7 +10,6 @@ use App\Models\MenuItem;
 use App\Models\OpeningHour;
 use App\Models\Restaurant;
 use App\Models\RestaurantChatSetting;
-use App\Models\RestaurantThemeSetting;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -33,18 +32,6 @@ class DatabaseSeeder extends Seeder
             'postal_code' => '75000',
             'country' => 'France',
             'published_at' => now(),
-        ]);
-
-        RestaurantThemeSetting::query()->create([
-            'restaurant_id' => $restaurant->id,
-            'color_primary' => '#8B4513',
-            'color_secondary' => '#2C1810',
-            'color_text' => '#1a1a1a',
-            'radius_sm' => 0.25,
-            'radius_md' => 0.5,
-            'radius_lg' => 1,
-            'font_heading_key' => 'playfair-display',
-            'font_body_key' => 'plus-jakarta-sans',
         ]);
 
         RestaurantChatSetting::query()->create([

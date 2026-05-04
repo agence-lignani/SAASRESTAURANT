@@ -39,6 +39,73 @@ class SiteContentCmsTest extends TestCase
         $response->assertSee('Manifeste personnalisé', false);
     }
 
+    public function test_home_palazzo_sections_are_editable_from_backoffice(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+        $restaurant = Restaurant::query()->firstOrFail();
+
+        RestaurantPageContent::query()->create([
+            'restaurant_id' => $restaurant->id,
+            'content' => [
+                'home' => [
+                    'hero' => [
+                        'brand_label' => 'BRAND CMS',
+                        'nav_menu_label' => 'Carte CMS',
+                    ],
+                    'menus' => [
+                        'chip_label' => 'PASTILLE CMS',
+                        'section_title' => 'Plats CMS',
+                        'items' => [
+                            [
+                                'title' => 'Pizza CMS',
+                                'price' => '22 €',
+                                'description' => 'Description CMS',
+                            ],
+                        ],
+                    ],
+                    'values' => [
+                        'heading' => 'Valeurs CMS',
+                        'items' => [
+                            ['title' => 'Valeur 1 CMS', 'text' => 'Texte valeur 1 CMS'],
+                            ['title' => 'Valeur 2 CMS', 'text' => 'Texte valeur 2 CMS'],
+                        ],
+                    ],
+                    'practical' => [
+                        'opening_title' => 'Horaires CMS',
+                        'opening_lines' => [
+                            ['line' => 'Lun - Ven 10:00 - 23:00 CMS'],
+                        ],
+                        'footer_map_label' => 'Plan CMS',
+                        'footer_find_label' => 'Trouver CMS',
+                        'footer_hours_label' => 'Heures CMS',
+                        'footer_meta_lines' => [
+                            ['line' => 'Meta ligne CMS 1'],
+                            ['line' => 'Meta ligne CMS 2'],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('BRAND CMS', false);
+        $response->assertSee('Carte CMS', false);
+        $response->assertSee('PASTILLE CMS', false);
+        $response->assertSee('Plats CMS', false);
+        $response->assertSee('Pizza CMS', false);
+        $response->assertSee('Valeurs CMS', false);
+        $response->assertSee('Valeur 1 CMS', false);
+        $response->assertSee('Texte valeur 1 CMS', false);
+        $response->assertSee('Horaires CMS', false);
+        $response->assertSee('Lun - Ven 10:00 - 23:00 CMS', false);
+        $response->assertSee('Plan CMS', false);
+        $response->assertSee('Trouver CMS', false);
+        $response->assertSee('Heures CMS', false);
+        $response->assertSee('Meta ligne CMS 1', false);
+    }
+
     public function test_home_uses_fallback_when_no_custom_content_exists(): void
     {
         $this->seed(DatabaseSeeder::class);
