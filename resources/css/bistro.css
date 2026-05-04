@@ -900,6 +900,309 @@
     padding-bottom: clamp(3.2rem, 5.8vw, 5.6rem);
 }
 
+.theme-palazzo-hero {
+    background:
+        radial-gradient(circle at 12% 8%, rgb(196 138 82 / 0.16), transparent 42%),
+        radial-gradient(circle at 86% 14%, rgb(131 73 31 / 0.14), transparent 46%),
+        linear-gradient(180deg, #fff9f2 0%, #f7eee4 100%);
+}
+
+.theme-palazzo-hero-grid {
+    display: grid;
+    gap: clamp(1.4rem, 3vw, 2.8rem);
+}
+
+@media (min-width: 1024px) {
+    .theme-palazzo-hero-grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        align-items: center;
+    }
+}
+
+.theme-palazzo-display {
+    margin-top: 0.55rem;
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-size: clamp(2.35rem, 5.4vw, 4.9rem);
+    line-height: 0.98;
+    letter-spacing: -0.028em;
+    color: #241910;
+}
+
+.theme-palazzo-lead {
+    margin-top: 1rem;
+    max-width: 58ch;
+    color: #473a2e;
+    font-size: clamp(1.02rem, 0.95rem + 0.38vw, 1.24rem);
+    line-height: 1.78;
+}
+
+.theme-palazzo-actions {
+    margin-top: 1.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.theme-palazzo-btn-primary,
+.theme-palazzo-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.78rem 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.theme-palazzo-btn-primary {
+    background: linear-gradient(135deg, #7f3f15 0%, #a95f28 100%);
+    color: #fff8f1;
+    box-shadow: 0 14px 30px rgb(83 42 14 / 0.26);
+}
+
+.theme-palazzo-btn-primary:hover {
+    transform: translateY(-1px);
+}
+
+.theme-palazzo-btn-secondary {
+    border: 1px solid #c89f7d;
+    background: #fff8f1;
+    color: #5e3518;
+}
+
+.theme-palazzo-btn-light {
+    border-color: rgb(255 255 255 / 0.48);
+    background: rgb(255 255 255 / 0.08);
+    color: #fff;
+}
+
+.theme-palazzo-proof {
+    margin-top: 1.55rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.7rem;
+}
+
+.theme-palazzo-proof > div {
+    border: 1px solid #e8d5c2;
+    border-radius: 0.9rem;
+    background: rgb(255 252 248 / 0.86);
+    padding: 0.7rem 0.78rem;
+}
+
+.theme-palazzo-proof span {
+    display: block;
+    color: #7b6958;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.theme-palazzo-proof strong {
+    color: #2f2117;
+    font-size: 0.95rem;
+}
+
+.theme-palazzo-hero-visual {
+    position: relative;
+}
+
+.theme-palazzo-image-card {
+    overflow: hidden;
+    border-radius: 1.4rem;
+    border: 1px solid #e7d6c5;
+    background: #f4eadf;
+    min-height: clamp(17rem, 34vw, 29rem);
+    box-shadow: 0 30px 68px rgb(69 43 23 / 0.2);
+}
+
+.theme-palazzo-image-card img,
+.theme-palazzo-section-image img,
+.theme-palazzo-menu-image img,
+.theme-palazzo-dish-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.theme-palazzo-floating-card {
+    position: absolute;
+    right: clamp(0.7rem, 2vw, 1.2rem);
+    bottom: clamp(0.7rem, 2vw, 1.2rem);
+    max-width: 16.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(255 255 255 / 0.36);
+    background: rgb(44 26 14 / 0.9);
+    color: #fff9ef;
+    padding: 0.85rem 1rem;
+    backdrop-filter: blur(6px);
+}
+
+.theme-palazzo-floating-card span {
+    display: block;
+    font-size: 0.69rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.72);
+}
+
+.theme-palazzo-floating-card strong {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 1.05rem;
+}
+
+.theme-palazzo-floating-card p {
+    margin-top: 0.35rem;
+    color: rgb(255 255 255 / 0.82);
+    font-size: 0.88rem;
+    line-height: 1.48;
+}
+
+.theme-palazzo-split {
+    display: grid;
+    gap: clamp(1.2rem, 2.8vw, 2.4rem);
+}
+
+@media (min-width: 1024px) {
+    .theme-palazzo-split {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: stretch;
+    }
+
+    .theme-palazzo-split-reverse > :first-child {
+        order: 2;
+    }
+}
+
+.theme-palazzo-section-image {
+    overflow: hidden;
+    border-radius: 1.3rem;
+    border: 1px solid #e8d8c8;
+    background: #f8f1e8;
+    min-height: clamp(16rem, 28vw, 24rem);
+}
+
+.theme-palazzo-text-panel {
+    border-radius: 1.25rem;
+    border: 1px solid #eadccc;
+    background: #fffcf8;
+    padding: clamp(1.1rem, 2.4vw, 2.1rem);
+    box-shadow: 0 20px 46px rgb(69 44 24 / 0.1);
+}
+
+.theme-palazzo-signature {
+    margin-top: 1.05rem;
+    color: #6a4a34;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.theme-palazzo-dark {
+    background: linear-gradient(160deg, #1f140e 0%, #3b2416 55%, #5a341f 100%);
+}
+
+.theme-palazzo-menu-feature {
+    display: grid;
+    gap: clamp(1.2rem, 3vw, 2.6rem);
+}
+
+@media (min-width: 1024px) {
+    .theme-palazzo-menu-feature {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        align-items: center;
+    }
+}
+
+.theme-palazzo-menu-image {
+    overflow: hidden;
+    border-radius: 1.2rem;
+    border: 1px solid rgb(255 255 255 / 0.2);
+    min-height: clamp(16rem, 28vw, 23rem);
+}
+
+.theme-palazzo-dish-grid,
+.theme-palazzo-review-grid,
+.theme-palazzo-faq-grid {
+    margin-top: 1.3rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.theme-palazzo-dish-card,
+.theme-palazzo-review-card,
+.theme-palazzo-faq-card {
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid #e7d8c9;
+    background: #fffdf9;
+    box-shadow: 0 14px 34px rgb(69 44 24 / 0.08);
+}
+
+.theme-palazzo-dish-card figure {
+    min-height: 11rem;
+    background: #f4e9dd;
+}
+
+.theme-palazzo-review-card,
+.theme-palazzo-faq-card {
+    padding: 1.05rem 1.1rem;
+}
+
+.theme-palazzo-review-card p {
+    color: #41352b;
+    line-height: 1.72;
+}
+
+.theme-palazzo-review-card strong {
+    display: block;
+    margin-top: 0.6rem;
+    color: #291d14;
+}
+
+.theme-palazzo-faq-card h3 {
+    color: #281c14;
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    font-size: 1.2rem;
+}
+
+.theme-palazzo-faq-card div {
+    margin-top: 0.55rem;
+    color: #473b31;
+    line-height: 1.72;
+}
+
+.theme-palazzo-badge {
+    margin-top: 1rem;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.22rem;
+    border-radius: 0.9rem;
+    border: 1px solid #e7d9ca;
+    background: #fff8f1;
+    padding: 0.65rem 0.8rem;
+}
+
+.theme-palazzo-badge span {
+    color: #7a6656;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.theme-palazzo-badge strong {
+    color: #291c13;
+    font-size: 1.04rem;
+}
+
+@media (max-width: 767px) {
+    .theme-palazzo-proof {
+        grid-template-columns: 1fr;
+    }
+}
+
 .bistro-main-header {
     border-bottom: 1px solid #e7dbcf;
     background: rgb(253 250 246 / 0.9);
