@@ -1,10 +1,10 @@
 @if($categories->isEmpty())
-    <p class="text-stone-500">{{ $pageContent['empty_state'] ?? 'La carte sera bientôt en ligne.' }}</p>
+    <p class="theme-lumen-readable">{{ $pageContent['empty_state'] ?? 'La carte sera bientôt en ligne.' }}</p>
 @else
-    <div class="space-y-8 md:space-y-10">
+    <div class="space-y-10 md:space-y-12">
         @foreach($categories as $category)
-            <section class="lumen-card scroll-mt-28 p-6 md:p-8" id="cat-{{ $category->id }}" aria-labelledby="heading-cat-{{ $category->id }}">
-                <div class="flex flex-wrap items-end justify-between gap-4 border-b border-[#eadfd4] pb-4">
+            <section class="theme-lumen-menu-card scroll-mt-28" id="cat-{{ $category->id }}" aria-labelledby="heading-cat-{{ $category->id }}">
+                <div class="flex flex-wrap items-start justify-between gap-4 border-b border-[#d8c6b4] pb-5">
                     <h2 id="heading-cat-{{ $category->id }}" class="theme-lumen-heading-md">
                         {{ $category->name }}
                     </h2>
@@ -15,25 +15,25 @@
                     @endif
                 </div>
                 @if(filled($category->description))
-                    <p class="theme-lumen-copy mt-3 text-sm">{{ $category->description }}</p>
+                    <p class="theme-lumen-readable mt-4 max-w-3xl">{{ $category->description }}</p>
                 @endif
 
                 @if($category->menuItems->isEmpty())
-                    <p class="mt-6 text-sm text-stone-500">{{ $pageContent['empty_category_items'] ?? 'Aucun plat dans cette catégorie pour le moment.' }}</p>
+                    <p class="theme-lumen-readable mt-6">{{ $pageContent['empty_category_items'] ?? 'Aucun plat dans cette catégorie pour le moment.' }}</p>
                 @else
-                    <ul class="mt-7 divide-y divide-[#eadfd4]">
+                    <ul class="mt-7 space-y-4">
                         @foreach($category->menuItems as $item)
-                            <li class="py-5 first:pt-0 last:pb-0">
-                                <div class="flex flex-wrap items-baseline justify-between gap-2">
-                                    <h3 class="theme-lumen-heading-md text-xl">{{ $item->name }}</h3>
+                            <li class="theme-lumen-menu-item">
+                                <div class="flex flex-wrap items-start justify-between gap-4">
+                                    <h3 class="theme-lumen-heading-md max-w-2xl text-2xl">{{ $item->name }}</h3>
                                     @if($item->price !== null)
-                                        <span class="theme-lumen-price tabular-nums">
+                                        <span class="theme-lumen-price-badge tabular-nums">
                                             {{ number_format((float) $item->price, 2, ',', ' ') }}&nbsp;{{ $item->currency ?? 'EUR' }}
                                         </span>
                                     @endif
                                 </div>
                                 @if(filled($item->description))
-                                    <p class="theme-lumen-copy mt-2 text-sm">{{ $item->description }}</p>
+                                    <p class="theme-lumen-readable mt-3 max-w-3xl">{{ $item->description }}</p>
                                 @endif
                                 @php
                                     $opts = \App\Support\AllergenCatalog::options();
@@ -41,13 +41,13 @@
                                     $flags = $item->dietary_flags ?? [];
                                 @endphp
                                 @if(! empty($allergens))
-                                    <p class="mt-3 text-xs text-stone-500">
-                                        <span class="font-semibold text-stone-700">{{ $pageContent['allergens_label'] ?? 'Allergènes :' }}</span>
+                                    <p class="mt-4 text-sm text-[#5e5046]">
+                                        <span class="font-bold text-[#2a241f]">{{ $pageContent['allergens_label'] ?? 'Allergènes :' }}</span>
                                         {{ collect($allergens)->map(fn ($k) => $opts[$k] ?? $k)->implode(' · ') }}
                                     </p>
                                 @endif
                                 @if(! empty($flags))
-                                    <p class="mt-2 text-xs font-medium text-[var(--bistro-color-primary)]">
+                                    <p class="mt-3 inline-flex rounded-full bg-[#f1e3d5] px-3 py-1 text-sm font-bold text-[#5a2e12]">
                                         {{ collect($flags)->map(fn ($f) => match ($f) {
                                             'vegetarian' => 'Végétarien',
                                             'vegan' => 'Vegan',

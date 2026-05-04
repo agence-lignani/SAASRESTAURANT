@@ -44,7 +44,7 @@
                                 <p class="theme-lumen-kicker">Chapter 01</p>
                                 <h2 class="theme-lumen-heading-lg mt-3">{{ $about['heading'] ?? 'Manifesto' }}</h2>
                             </aside>
-                            <article class="theme-lumen-copy md:col-span-9 space-y-5 text-lg">
+                            <article class="theme-lumen-copy theme-lumen-readable md:col-span-9 space-y-5">
                                 @foreach(($about['paragraphs'] ?? []) as $paragraph)
                                     <div>{!! \App\Support\SiteContent\SiteContentHtml::paragraph($paragraph) !!}</div>
                                 @endforeach
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="md:col-span-6">
                                             <h3 class="theme-lumen-heading-md">{{ $item['title'] }}</h3>
-                                            <p class="theme-lumen-copy mt-2 text-sm">{{ $item['description'] ?? '' }}</p>
+                                            <p class="theme-lumen-copy mt-2">{{ $item['description'] ?? '' }}</p>
                                         </div>
                                         <div class="md:col-span-3">
                                             <a href="{{ route('site.carte') }}" class="theme-lumen-btn-secondary w-full justify-center">View</a>
@@ -129,7 +129,7 @@
                                 @if(filled($item['question'] ?? null))
                                     <article class="grid gap-4 border-b border-[#e8ddd2] py-5 md:grid-cols-12">
                                         <h3 class="theme-lumen-heading-md md:col-span-5">{{ $item['question'] }}</h3>
-                                        <div class="theme-lumen-copy text-sm md:col-span-7">{!! \App\Support\SiteContent\SiteContentHtml::safe($item['answer'] ?? '') !!}</div>
+                                        <div class="theme-lumen-copy md:col-span-7">{!! \App\Support\SiteContent\SiteContentHtml::safe($item['answer'] ?? '') !!}</div>
                                     </article>
                                 @endif
                             @endforeach

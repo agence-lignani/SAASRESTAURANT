@@ -345,8 +345,26 @@
     font-family: var(--bistro-font-body), system-ui, sans-serif;
     background-color: var(--bistro-surface-page);
     color: var(--bistro-color-text);
-    line-height: 1.65;
+    font-size: 1rem;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+}
+
+.bistro-body a,
+.bistro-body button,
+.bistro-body input,
+.bistro-body select,
+.bistro-body textarea {
+    outline-offset: 0.22rem;
+}
+
+.bistro-body a:focus-visible,
+.bistro-body button:focus-visible,
+.bistro-body input:focus-visible,
+.bistro-body select:focus-visible,
+.bistro-body textarea:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--bistro-color-primary) 72%, #ffffff);
+    outline-offset: 0.22rem;
 }
 
 /* ---------------------------
@@ -358,7 +376,8 @@
         radial-gradient(circle at top left, color-mix(in srgb, var(--bistro-color-primary) 12%, transparent), transparent 28rem),
         linear-gradient(180deg, #fdfaf6 0%, #f8f4ef 42%, #f4ede4 100%);
     color: #2a241f;
-    line-height: 1.68;
+    font-size: clamp(1rem, 0.94rem + 0.18vw, 1.08rem);
+    line-height: 1.72;
 }
 
 .theme-lumen-header {
@@ -385,11 +404,11 @@
 }
 
 .theme-lumen-nav a {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #4f433a;
+    color: #3d332b;
 }
 
 .theme-lumen-nav a:focus-visible,
@@ -401,11 +420,11 @@
 }
 
 .theme-lumen-cta {
-    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 34%, #ffffff);
+    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 42%, #ffffff);
     border-radius: 999px;
-    padding: 0.58rem 1rem;
+    padding: 0.68rem 1.08rem;
     color: #2a241f !important;
-    background: #fffaf4;
+    background: #fffdf9;
 }
 
 .theme-lumen-hero {
@@ -426,7 +445,7 @@
 .theme-lumen-section-panel {
     border: 1px solid rgb(229 215 200 / 0.82);
     border-radius: clamp(1.4rem, 3vw, 2rem);
-    background: rgb(255 252 248 / 0.72);
+    background: rgb(255 252 248 / 0.9);
     padding: clamp(1.35rem, 3vw, 2.25rem);
     box-shadow: 0 22px 54px rgb(67 45 28 / 0.07);
 }
@@ -452,12 +471,12 @@
 
 .theme-lumen-btn-primary {
     display: inline-flex;
-    min-height: 2.75rem;
+    min-height: 3rem;
     align-items: center;
     justify-content: center;
     background: var(--bistro-color-primary);
-    padding: 0.72rem 1.35rem;
-    font-size: 0.66rem;
+    padding: 0.78rem 1.45rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -477,12 +496,12 @@
 
 .theme-lumen-btn-secondary {
     display: inline-flex;
-    min-height: 2.75rem;
+    min-height: 3rem;
     align-items: center;
     justify-content: center;
     border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 24%, #d9c9b7);
-    padding: 0.72rem 1.35rem;
-    font-size: 0.66rem;
+    padding: 0.78rem 1.45rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -506,8 +525,8 @@
 
 .theme-lumen-title {
     font-family: var(--bistro-font-heading), system-ui, serif;
-    font-size: clamp(2.15rem, 4.2vw, 3.5rem);
-    line-height: 1.04;
+    font-size: clamp(2.25rem, 4.2vw, 3.65rem);
+    line-height: 1.06;
     color: #221c17;
     letter-spacing: -0.025em;
     text-wrap: balance;
@@ -524,16 +543,71 @@
 .theme-lumen-menu-list {
     border: 1px solid rgb(221 206 192 / 0.82);
     border-radius: 1.35rem;
-    background: rgb(255 252 248 / 0.62);
+    background: rgb(255 252 248 / 0.96);
     overflow: hidden;
+    box-shadow: 0 16px 38px rgb(67 45 28 / 0.07);
 }
 
 .theme-lumen-menu-row {
-    padding: clamp(1rem, 2vw, 1.45rem);
+    padding: clamp(1.15rem, 2.4vw, 1.75rem);
+    transition: background-color 150ms ease;
+}
+
+.theme-lumen-menu-row:hover {
+    background: rgb(250 242 233 / 0.72);
 }
 
 .theme-lumen-menu-row + .theme-lumen-menu-row {
     border-top: 1px solid rgb(221 206 192 / 0.72);
+}
+
+.theme-lumen-menu-item-title {
+    font-family: var(--bistro-font-heading), system-ui, serif;
+    color: #211a15;
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    line-height: 1.16;
+    letter-spacing: -0.015em;
+}
+
+.theme-lumen-menu-item-description {
+    margin-top: 0.55rem;
+    max-width: 48rem;
+    color: #4a3e34;
+    font-size: clamp(1rem, 0.96rem + 0.15vw, 1.08rem);
+    line-height: 1.72;
+}
+
+.theme-lumen-menu-price {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.35rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 24%, #e5d7c8);
+    background: #fff8ef;
+    padding: 0.45rem 0.85rem;
+    color: #5d310f;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.theme-lumen-meta {
+    color: #5f5146;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+
+.theme-lumen-tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--bistro-color-primary) 10%, #fff8ef);
+    padding: 0.28rem 0.65rem;
+    color: #5d310f;
+    font-size: 0.78rem;
+    font-weight: 800;
 }
 
 .theme-lumen-card-media {
@@ -632,7 +706,7 @@
 .theme-lumen-panel {
     border: 1px solid color-mix(in srgb, var(--bistro-color-primary) 14%, #e6d9cb);
     border-radius: 1.35rem;
-    background: rgb(255 252 248 / 0.95);
+    background: rgb(255 252 248 / 0.98);
     padding: clamp(1.25rem, 2.8vw, 2rem);
     box-shadow: 0 18px 42px rgb(67 45 28 / 0.08);
 }
@@ -644,11 +718,11 @@
 .theme-lumen-label {
     display: block;
     margin-bottom: 0.45rem;
-    font-size: 0.78rem;
+    font-size: 0.84rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #4f433a;
+    color: #3d332b;
 }
 
 .theme-lumen-input {
@@ -656,9 +730,10 @@
     border-radius: 1rem;
     border: 1px solid #ddcec0;
     background: #fffdf9;
-    padding: 0.82rem 1rem;
+    padding: 0.95rem 1rem;
     color: #2a241f;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.5;
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.8);
 }
 
@@ -669,16 +744,17 @@
 }
 
 .theme-lumen-subtle {
-    color: #6a5d51;
-    line-height: 1.75;
+    color: #4f433a;
+    font-size: 1rem;
+    line-height: 1.78;
 }
 
 .theme-lumen-kicker {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--bistro-color-secondary) 70%, #5a473a);
+    color: #5b4031;
 }
 
 .theme-lumen-heading-xl,
@@ -690,23 +766,24 @@
 }
 
 .theme-lumen-heading-xl {
-    font-size: clamp(2.8rem, 7vw, 5.2rem);
-    line-height: 0.96;
+    font-size: clamp(3rem, 7vw, 5.4rem);
+    line-height: 1;
 }
 
 .theme-lumen-heading-lg {
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.02;
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    line-height: 1.06;
 }
 
 .theme-lumen-heading-md {
-    font-size: clamp(1.55rem, 3vw, 2.05rem);
-    line-height: 1.1;
+    font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+    line-height: 1.16;
 }
 
 .theme-lumen-copy {
-    color: #4e4339;
-    line-height: 1.75;
+    color: #40362f;
+    font-size: clamp(1rem, 0.96rem + 0.18vw, 1.12rem);
+    line-height: 1.82;
 }
 
 .theme-lumen-price {

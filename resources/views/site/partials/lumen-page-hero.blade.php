@@ -7,7 +7,7 @@
             {{ $title }}
         </h1>
         @if(filled($intro ?? null))
-            <div class="theme-lumen-copy mt-5 max-w-3xl text-base md:text-lg">
+            <div class="theme-lumen-copy mt-5 max-w-3xl text-lg">
                 {!! \App\Support\SiteContent\SiteContentHtml::paragraph($intro) !!}
             </div>
         @endif

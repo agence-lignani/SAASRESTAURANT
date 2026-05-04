@@ -21,46 +21,50 @@
             @endphp
             <style>
                 .reservation-picker {
-                    background: var(--bistro-color-primary);
-                    color: #fff;
-                    border-radius: 24px;
-                    padding: 1rem;
+                    border: 1px solid #d6bfa8;
+                    background: linear-gradient(145deg, #6f3f1c, #3a2114);
+                    color: #fffaf4;
+                    border-radius: 28px;
+                    padding: clamp(1rem, 3vw, 1.35rem);
+                    box-shadow: 0 22px 52px rgb(67 45 28 / .16);
                 }
                 .reservation-picker-row {
                     width: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    padding: .95rem 0;
-                    border-top: 1px solid rgb(255 255 255 / .35);
+                    padding: 1.15rem .15rem;
+                    border-top: 1px solid rgb(255 255 255 / .28);
                     background: transparent;
                     color: inherit;
                     font-weight: 700;
-                    font-size: 1.05rem;
+                    font-size: clamp(1.02rem, 2vw, 1.16rem);
                     cursor: pointer;
                 }
                 .reservation-picker-row:first-of-type { border-top: 0; }
                 .reservation-picker-label { display: inline-flex; align-items: center; gap: .65rem; }
-                .reservation-picker-panel { display: none; padding: 0 0 .95rem; }
+                .reservation-picker-panel { display: none; padding: 0 0 1.05rem; }
                 .reservation-picker-panel.is-open { display: block; }
                 .reservation-picker-input {
                     width: 100%;
-                    border-radius: 12px;
-                    border: 1px solid rgb(255 255 255 / .45);
-                    background: rgb(255 255 255 / .12);
-                    color: #fff;
-                    padding: .7rem .8rem;
+                    min-height: 3rem;
+                    border-radius: 14px;
+                    border: 1px solid rgb(255 255 255 / .5);
+                    background: rgb(255 255 255 / .16);
+                    color: #fffaf4;
+                    padding: .78rem .9rem;
+                    font-size: 1rem;
                 }
                 .reservation-picker-input option { color: #111827; }
                 .reservation-picker-date-wrap {
                     border: 1px solid rgb(255 255 255 / .35);
                     border-radius: 14px;
-                    padding: .65rem;
-                    background: rgb(255 255 255 / .08);
+                    padding: .8rem;
+                    background: rgb(255 255 255 / .1);
                 }
                 .reservation-picker-date-label {
                     display: block;
-                    font-size: .78rem;
+                    font-size: .82rem;
                     font-weight: 700;
                     margin-bottom: .45rem;
                     color: rgb(255 255 255 / .9);
@@ -74,20 +78,20 @@
                 .reservation-picker-slots {
                     display: grid;
                     grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: .5rem;
+                    gap: .62rem;
                 }
                 .reservation-picker-covers {
                     display: grid;
                     grid-template-columns: repeat(4, minmax(0, 1fr));
-                    gap: .5rem;
+                    gap: .62rem;
                 }
                 .reservation-picker-slot {
                     border-radius: 12px;
                     border: 1px solid rgb(255 255 255 / .45);
                     background: rgb(255 255 255 / .12);
                     color: #fff;
-                    padding: .55rem .45rem;
-                    font-size: .8rem;
+                    padding: .68rem .5rem;
+                    font-size: .92rem;
                     font-weight: 700;
                 }
                 .reservation-picker-slot.is-active { background: #fff; color: var(--bistro-color-primary); }
@@ -101,8 +105,15 @@
                     font-size: 1.35rem;
                     font-weight: 800;
                     line-height: 1;
-                    padding: 1rem;
+                    padding: 1.05rem;
                     cursor: pointer;
+                }
+                .reservation-picker-row:focus-visible,
+                .reservation-picker-input:focus-visible,
+                .reservation-picker-slot:focus-visible,
+                .reservation-picker-submit:focus-visible {
+                    outline: 3px solid #fff;
+                    outline-offset: 3px;
                 }
             </style>
 
