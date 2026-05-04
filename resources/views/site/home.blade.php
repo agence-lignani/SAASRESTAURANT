@@ -3,13 +3,8 @@
 @section('title', $restaurant->name)
 
 @section('content')
-    @php
-        $theme = request()->query('theme', env('SITE_THEME_PRESET', 'lumen-atelier'));
-        $theme = in_array($theme, ['bakery-noir', 'lumen-atelier'], true) ? $theme : 'lumen-atelier';
-    @endphp
-
     <main id="contenu-principal">
-        @include('site.themes.'.$theme.'.home', [
+        @include('site.themes.lumen-atelier.home', [
             'content' => $content,
             'restaurant' => $restaurant,
         ])

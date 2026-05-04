@@ -4,31 +4,22 @@
 
 @section('content')
     @include('site.partials.top-contact-bar', ['restaurant' => $restaurant])
+    @include('site.partials.lumen-header', ['restaurant' => $restaurant])
 
-    <header class="bistro-main-header sticky top-0 z-50 border-b border-stone-200/80 bg-white/75 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
-        <div class="bistro-container flex flex-wrap items-center justify-between gap-4 py-4">
-            <a href="{{ route('site.home') }}" class="bistro-title text-lg text-stone-900 md:text-xl">
-                {{ $restaurant->name }}
-            </a>
-            @include('site.partials.main-nav')
-        </div>
-    </header>
-
-    <main id="contenu-principal" class="pb-16 pt-8 md:pb-24 md:pt-12">
-        <div class="bistro-container max-w-2xl">
+    <main id="contenu-principal" class="theme-lumen-page">
+        <div class="bistro-container max-w-3xl">
             @php($sectionOrder = $pageContent['section_order'] ?? \App\Support\SiteContent\PageSectionCatalog::defaultOrder('contact'))
             @foreach($sectionOrder as $sectionKey)
                 @if($sectionKey === 'header')
-                    <section>
-                        <h1 class="bistro-title text-3xl text-stone-900 md:text-4xl">{{ $pageContent['title'] ?? 'Nous écrire' }}</h1>
-                        <div class="prose prose-stone mt-3 max-w-none text-sm text-stone-600 prose-p:my-1">
-                            {!! \App\Support\SiteContent\SiteContentHtml::paragraph($pageContent['intro'] ?? 'Réservation, privatisation ou simple message : nous vous répondrons dès que possible.') !!}
-                        </div>
-                    </section>
+                    @include('site.partials.lumen-page-hero', [
+                        'eyebrow' => 'Contact',
+                        'title' => $pageContent['title'] ?? 'Nous écrire',
+                        'intro' => $pageContent['intro'] ?? 'Réservation, privatisation ou simple message : nous vous répondrons dès que possible.',
+                    ])
                 @endif
 
                 @if($sectionKey === 'feedback')
-                    <section class="mt-8 space-y-4">
+                    <section class="theme-lumen-content-card mt-8 space-y-4">
                         @if(session('contact_ok'))
                             <div class="prose prose-stone prose-emerald max-w-none rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm text-emerald-900 prose-p:my-0" role="status">
                                 {!! \App\Support\SiteContent\SiteContentHtml::safe($pageContent['success_message'] ?? 'Merci, votre message a bien été envoyé.') !!}
@@ -49,7 +40,7 @@
                 @endif
 
                 @if($sectionKey === 'form')
-                    <form method="post" action="{{ route('site.contact.store') }}" class="mt-10 space-y-6">
+                    <form method="post" action="{{ route('site.contact.store') }}" class="theme-lumen-content-card mt-8 space-y-6">
                         @csrf
                         {{-- Honeypot F11 : laisser vide --}}
                         <div class="hidden" aria-hidden="true">

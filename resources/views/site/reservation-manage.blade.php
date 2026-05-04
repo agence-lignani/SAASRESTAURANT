@@ -4,24 +4,28 @@
 
 @section('content')
     @include('site.partials.top-contact-bar', ['restaurant' => $restaurant])
+    @include('site.partials.lumen-header', ['restaurant' => $restaurant])
 
-    <main id="contenu-principal" class="pb-16 pt-8 md:pb-24 md:pt-12">
-        <div class="bistro-container max-w-3xl space-y-6">
-            @php($sectionOrder = $pageContent['section_order'] ?? \App\Support\SiteContent\PageSectionCatalog::defaultOrder('reservation_manage'))
+    <main id="contenu-principal" class="theme-lumen-page">
+        @php($sectionOrder = $pageContent['section_order'] ?? \App\Support\SiteContent\PageSectionCatalog::defaultOrder('reservation_manage'))
+        @if(in_array('header', $sectionOrder, true))
+            @include('site.partials.lumen-page-hero', [
+                'eyebrow' => 'Réservation',
+                'title' => $pageContent['title'] ?? 'Gérer ma réservation',
+                'intro' => $pageContent['intro'] ?? 'Vous pouvez annuler ou choisir un autre créneau selon les disponibilités.',
+            ])
+        @endif
+
+        <div class="bistro-container max-w-3xl space-y-6 pb-16 md:pb-24">
             @foreach($sectionOrder as $sectionKey)
                 @if($sectionKey === 'header')
-                    <div class="bistro-card p-6 md:p-8">
-                        <h1 class="bistro-title text-3xl text-stone-900 md:text-4xl">{{ $pageContent['title'] ?? 'Gérer ma réservation' }}</h1>
-                        <div class="prose prose-stone mt-2 max-w-none text-sm text-stone-600 prose-p:my-1">
-                            {!! \App\Support\SiteContent\SiteContentHtml::paragraph($pageContent['intro'] ?? 'Vous pouvez annuler ou choisir un autre créneau selon les disponibilités.') !!}
-                        </div>
                         @if (session('manage_success'))
-                            <div class="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+                            <div class="theme-lumen-notice theme-lumen-notice-success">
                                 {{ session('manage_success') }}
                             </div>
                         @endif
                         @if ($errors->any())
-                            <div class="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                            <div class="theme-lumen-notice theme-lumen-notice-error">
                                 <ul class="list-disc space-y-1 pl-5">
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -29,12 +33,11 @@
                                 </ul>
                             </div>
                         @endif
-                    </div>
                 @endif
 
                 @if($sectionKey === 'summary')
-                    <div class="bistro-card p-6 md:p-8">
-                        <div class="rounded-2xl border border-stone-200 bg-stone-50 p-4 text-sm text-stone-700">
+                    <div class="theme-lumen-panel">
+                        <div class="rounded-2xl border border-[#e6d7c7] bg-[#fffaf4] p-5 text-sm leading-7 text-[#4e4339]">
                             <p><strong>{{ $pageContent['details_customer_label'] ?? 'Client :' }}</strong> {{ $reservation->customer_name }}</p>
                             <p><strong>{{ $pageContent['details_date_label'] ?? 'Date actuelle :' }}</strong> {{ $reservation->reservation_at->format('d/m/Y H:i') }}</p>
                             <p><strong>{{ $pageContent['details_service_label'] ?? 'Service :' }}</strong> {{ $reservation->bookingService->name }}</p>
@@ -45,9 +48,9 @@
                 @endif
 
                 @if($sectionKey === 'actions')
-                    <div class="bistro-card p-6 md:p-8">
+                    <div class="theme-lumen-panel">
                         @if (! $canManage)
-                            <p class="text-sm text-amber-700">{{ $pageContent['deadline_exceeded_label'] ?? 'Le délai pour annuler ou reprogrammer est dépassé.' }}</p>
+                            <p class="theme-lumen-copy text-sm text-amber-800">{{ $pageContent['deadline_exceeded_label'] ?? 'Le délai pour annuler ou reprogrammer est dépassé.' }}</p>
                         @else
                             <form method="POST" action="{{ route('site.reservation.reschedule', ['token' => $token]) }}" class="space-y-4">
                                 @csrf
@@ -69,13 +72,13 @@
                                 </div>
 
                                 <div class="flex flex-wrap gap-3">
-                                    <button type="submit" class="bistro-btn-primary">{{ $pageContent['reschedule_label'] ?? 'Reprogrammer' }}</button>
+                                    <button type="submit" class="theme-lumen-btn-primary">{{ $pageContent['reschedule_label'] ?? 'Reprogrammer' }}</button>
                                 </div>
                             </form>
 
                             <form method="POST" action="{{ route('site.reservation.cancel', ['token' => $token]) }}" class="mt-3">
                                 @csrf
-                                <button type="submit" class="bistro-btn-secondary">{{ $pageContent['cancel_label'] ?? 'Annuler ma réservation' }}</button>
+                                <button type="submit" class="theme-lumen-btn-secondary">{{ $pageContent['cancel_label'] ?? 'Annuler ma réservation' }}</button>
                             </form>
                         @endif
                     </div>

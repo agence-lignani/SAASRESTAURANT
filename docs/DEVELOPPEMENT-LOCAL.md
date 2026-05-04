@@ -61,7 +61,7 @@ composer run preview
 
 Cette commande compile les assets, supprime `public/hot`, puis lance Laravel seul sur `0.0.0.0:8000`.
 
-La page d’accueil utilise le thème `lumen-atelier` par défaut. Pour comparer l’ancien rendu, ajoutez `?theme=bakery-noir` à l’URL.
+Toutes les pages publiques utilisent le thème unique `lumen-atelier`.
 
 ## E-mail
 

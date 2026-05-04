@@ -4,18 +4,16 @@
 
 @section('content')
     @include('site.partials.top-contact-bar', ['restaurant' => $restaurant])
+    @include('site.partials.lumen-header', ['restaurant' => $restaurant])
 
-    <header class="bistro-main-header sticky top-0 z-50 border-b border-stone-200/80 bg-white/75 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
-        <div class="bistro-container flex flex-wrap items-center justify-between gap-4 py-4">
-            <a href="{{ route('site.home') }}" class="bistro-title text-lg text-stone-900 md:text-xl">
-                {{ $restaurant->name }}
-            </a>
-            @include('site.partials.main-nav')
-        </div>
-    </header>
+    <main id="contenu-principal" class="theme-lumen-page">
+        @include('site.partials.lumen-page-hero', [
+            'eyebrow' => $pageContent['eyebrow'] ?? 'Réservation',
+            'title' => $pageContent['title'] ?? 'Réserver une table',
+            'intro' => $pageContent['intro'] ?? 'Choisissez un service, une date et vos coordonnées. Nous confirmons votre demande dès réception.',
+        ])
 
-    <main id="contenu-principal" class="pb-16 pt-8 md:pb-24 md:pt-12">
-        <div class="bistro-container max-w-3xl">
+        <div class="bistro-container max-w-3xl pb-16 md:pb-24">
             @php
                 $minDate = now()->addHours((int) ($bookingSettings?->min_notice_hours ?? 2))->toDateString();
                 $maxDate = now()->addDays((int) ($bookingSettings?->max_days_ahead ?? 30))->toDateString();
@@ -129,7 +127,7 @@
                 @endif
 
                 @if($sectionKey === 'booking_form')
-                    <form method="POST" action="{{ route('site.reservation.store') }}" class="bistro-card mt-8 space-y-7 p-6 md:p-8">
+                    <form method="POST" action="{{ route('site.reservation.store') }}" class="theme-lumen-card space-y-7 p-5 md:p-8">
                 @csrf
 
                 <div class="reservation-picker">
